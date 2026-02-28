@@ -1,0 +1,3 @@
+"""
+Database schemas for SMHunt
+"""

@@ -1,0 +1,162 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: smhunt-db-prod
+    restart: always
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME:-smhunt_prod}
+      POSTGRES_USER: ${POSTGRES_USER:-smhunt_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-smhunt_password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - smhunt-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-smhunt_user} -d ${DATABASE_NAME:-smhunt_prod}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Redis for caching and Celery broker
+  redis:
+    image: redis:7-alpine
+    container_name: smhunt-redis-prod
+    restart: always
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - smhunt-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Backend API Service
+  backend:
+    build:
+      context: ..
+      dockerfile: ./docker/backend/Dockerfile
+    container_name: smhunt-backend-prod
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgresql://smhunt_user:smhunt_password@db:5432/smhunt_prod}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379/0}
+      - CELERY_BROKER_URL=${CELERY_BROKER_URL:-redis://redis:6379/0}
+      - CELERY_RESULT_BACKEND=${CELERY_RESULT_BACKEND:-redis://redis:6379/0}
+      - SECRET_KEY=${SECRET_KEY}
+      - DEBUG=${DEBUG:-False}
+      - ENVIRONMENT=production
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs
+      - ./.env:/app/.env
+    networks:
+      - smhunt-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Celery Worker for Background Tasks
+  worker:
+    build:
+      context: ..
+      dockerfile: ./docker/backend/Dockerfile
+    container_name: smhunt-worker-prod
+    restart: always
+    command: celery -A src.tasks.celery_app worker --loglevel=info --concurrency=2
+    depends_on:
+      - db
+      - redis
+      - backend
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgresql://smhunt_user:smhunt_password@db:5432/smhunt_prod}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379/0}
+      - CELERY_BROKER_URL=${CELERY_BROKER_URL:-redis://redis:6379/0}
+      - SECRET_KEY=${SECRET_KEY}
+    volumes:
+      - ./logs:/app/logs
+      - ./.env:/app/.env
+    networks:
+      - smhunt-network
+
+  # Celery Beat for Scheduled Tasks
+  beat:
+    build:
+      context: ..
+      dockerfile: ./docker/backend/Dockerfile
+    container_name: smhunt-beat-prod
+    restart: always
+    command: celery -A src.tasks.celery_app beat --loglevel=info --pidfile=
+    depends_on:
+      - db
+      - redis
+      - backend
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgresql://smhunt_user:smhunt_password@db:5432/smhunt_prod}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379/0}
+      - CELERY_BROKER_URL=${CELERY_BROKER_URL:-redis://redis:6379/0}
+      - SECRET_KEY=${SECRET_KEY}
+    volumes:
+      - ./logs:/app/logs
+      - ./.env:/app/.env
+    networks:
+      - smhunt-network
+
+  # Frontend Service
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: smhunt-frontend-prod
+    restart: always
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=${FRONTEND_API_URL:-http://localhost:8000}
+    ports:
+      - "3000:3000"
+    networks:
+      - smhunt-network
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: smhunt-nginx-prod
+    restart: always
+    depends_on:
+      - backend
+      - frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    networks:
+      - smhunt-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  smhunt-network:
+    driver: bridge
