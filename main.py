@@ -1,6 +1,6 @@
 """
 SMHunt Autonomous Client Acquisition Agent
-Main application entry point
+Main application entry point for Vercel deployment
 """
 import os
 import sys
@@ -12,8 +12,14 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 # flake8: noqa: E402
 from src.api.main import app as fastapi_app
 
-# Export app for Railway deployment
+# Export app for Vercel deployment
 app = fastapi_app
+
+def handler(event, context):
+    """Vercel serverless function handler"""
+    from mangum import Mangum
+    asgi_handler = Mangum(fastapi_app)
+    return asgi_handler(event, context)
 
 if __name__ == "__main__":
     import uvicorn

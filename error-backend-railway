@@ -1,0 +1,785 @@
+2026-03-01T20:00:41.996717045Z [inf]  Starting Container
+2026-03-01T20:00:42.978474879Z [err]    File "/opt/venv/bin/uvicorn", line 8, in <module>
+2026-03-01T20:00:42.978481004Z [err]      sys.exit(main())
+2026-03-01T20:00:42.978487131Z [err]               ^^^^^^
+2026-03-01T20:00:42.978492788Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+2026-03-01T20:00:42.978500108Z [err]      return self.main(*args, **kwargs)
+2026-03-01T20:00:42.978506795Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:42.978512760Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+2026-03-01T20:00:42.978519706Z [err]      rv = self.invoke(ctx)
+2026-03-01T20:00:42.978526376Z [err]           ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:42.978532953Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+2026-03-01T20:00:42.978539379Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2026-03-01T20:00:42.979030718Z [inf]  2026-03-01 20:00:41 | INFO     | src.core.logger:setup_logging:73 - Logging configured with level: INFO
+2026-03-01T20:00:42.979036741Z [err]  Traceback (most recent call last):
+2026-03-01T20:00:42.980781607Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:42.980791246Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+2026-03-01T20:00:42.980799330Z [err]      return callback(*args, **kwargs)
+2026-03-01T20:00:42.980808232Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:42.980816652Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 416, in main
+2026-03-01T20:00:42.980824169Z [err]      run(
+2026-03-01T20:00:42.980831433Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+2026-03-01T20:00:42.980839293Z [err]      server.run()
+2026-03-01T20:00:42.980847743Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 61, in run
+2026-03-01T20:00:42.980854750Z [err]      return asyncio.run(self.serve(sockets=sockets))
+2026-03-01T20:00:42.980863362Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:42.980869967Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 190, in run
+2026-03-01T20:00:42.980879248Z [err]      return runner.run(main)
+2026-03-01T20:00:42.980885990Z [err]             ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:42.980895217Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 118, in run
+2026-03-01T20:00:42.984044760Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+2026-03-01T20:00:42.984057464Z [err]      module = importlib.import_module(module_str)
+2026-03-01T20:00:42.984068317Z [err]      return self._loop.run_until_complete(task)
+2026-03-01T20:00:42.984076604Z [err]      config.load()
+2026-03-01T20:00:42.984083199Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:42.984087667Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/config.py", line 467, in load
+2026-03-01T20:00:42.984094158Z [err]      self.loaded_app = import_from_string(self.app)
+2026-03-01T20:00:42.984099174Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2026-03-01T20:00:42.984104877Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:42.984110461Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+2026-03-01T20:00:42.998816811Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:42.998831696Z [err]    File "/app/main.py", line 13, in <module>
+2026-03-01T20:00:42.998834344Z [err]  
+2026-03-01T20:00:42.998838136Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-03-01T20:00:42.998846918Z [err]    File "/root/.nix-profile/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-03-01T20:00:42.998853897Z [err]      from src.api.main import app as fastapi_app
+2026-03-01T20:00:42.998856761Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-03-01T20:00:42.998860497Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2026-03-01T20:00:42.998862372Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:42.998867943Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-03-01T20:00:42.998873464Z [err]  ^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:42.998878731Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-03-01T20:00:42.998884962Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-03-01T20:00:42.998891794Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-03-01T20:00:43.010203762Z [err]    File "/app/src/api/main.py", line 6, in <module>
+2026-03-01T20:00:43.010217728Z [err]      from src.database.connection import init_database, create_admin_user
+2026-03-01T20:00:43.010225371Z [err]    File "/app/src/database/connection.py", line 9, in <module>
+2026-03-01T20:00:43.010231375Z [err]      engine = create_engine(
+2026-03-01T20:00:43.010237327Z [err]               ^^^^^^^^^^^^^^
+2026-03-01T20:00:43.010244510Z [err]    File "<string>", line 2, in create_engine
+2026-03-01T20:00:43.010251404Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+2026-03-01T20:00:43.010257207Z [err]      return fn(*args, **kwargs)  # type: ignore[no-any-return]
+2026-03-01T20:00:43.010263490Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:43.010270229Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 548, in create_engine
+2026-03-01T20:00:43.010667186Z [err]      u = _url.make_url(url)
+2026-03-01T20:00:43.010679413Z [err]          ^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:43.010688124Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 838, in make_url
+2026-03-01T20:00:43.010694445Z [err]      return _parse_url(name_or_url)
+2026-03-01T20:00:43.035055506Z [err]  ^^^^^^
+2026-03-01T20:00:43.035068126Z [err]  ValueError: invalid literal for int() with base 10: 'port'
+2026-03-01T20:00:43.035087716Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:43.035093171Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 899, in _parse_url
+2026-03-01T20:00:43.035100655Z [err]      components["port"] = int(components["port"])
+2026-03-01T20:00:43.035107555Z [err]                           ^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.054261608Z [inf]  2026-03-01 20:00:44 | INFO     | src.core.logger:setup_logging:73 - Logging configured with level: INFO
+2026-03-01T20:00:44.803080321Z [err]           ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.803091637Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+2026-03-01T20:00:44.803093546Z [err]      sys.exit(main())
+2026-03-01T20:00:44.803098436Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2026-03-01T20:00:44.803103101Z [err]               ^^^^^^
+2026-03-01T20:00:44.803106409Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.803111364Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+2026-03-01T20:00:44.803119315Z [err]      return self.main(*args, **kwargs)
+2026-03-01T20:00:44.803121643Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.803127492Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+2026-03-01T20:00:44.803134156Z [err]      rv = self.invoke(ctx)
+2026-03-01T20:00:44.803143646Z [err]  Traceback (most recent call last):
+2026-03-01T20:00:44.803172854Z [err]    File "/opt/venv/bin/uvicorn", line 8, in <module>
+2026-03-01T20:00:44.804476654Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.804485318Z [err]  ^^^^^^^^^^^^
+2026-03-01T20:00:44.804490604Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 190, in run
+2026-03-01T20:00:44.804506930Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+2026-03-01T20:00:44.804512199Z [err]      server.run()
+2026-03-01T20:00:44.804517372Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 61, in run
+2026-03-01T20:00:44.804524490Z [err]      return asyncio.run(self.serve(sockets=sockets))
+2026-03-01T20:00:44.804557458Z [err]  ^^^^^^^^
+2026-03-01T20:00:44.804569693Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+2026-03-01T20:00:44.804576931Z [err]      return callback(*args, **kwargs)
+2026-03-01T20:00:44.804584122Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.804590701Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 416, in main
+2026-03-01T20:00:44.804599309Z [err]      run(
+2026-03-01T20:00:44.807526900Z [err]      return runner.run(main)
+2026-03-01T20:00:44.807533247Z [err]             ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.807539344Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 118, in run
+2026-03-01T20:00:44.807546773Z [err]      return self._loop.run_until_complete(task)
+2026-03-01T20:00:44.807552525Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.807558315Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2026-03-01T20:00:44.807563534Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+2026-03-01T20:00:44.807569306Z [err]      config.load()
+2026-03-01T20:00:44.807576451Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/config.py", line 467, in load
+2026-03-01T20:00:44.807581677Z [err]      self.loaded_app = import_from_string(self.app)
+2026-03-01T20:00:44.811046292Z [err]      from src.database.connection import init_database, create_admin_user
+2026-03-01T20:00:44.811065546Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-03-01T20:00:44.811075119Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-03-01T20:00:44.811080589Z [err]    File "/app/main.py", line 13, in <module>
+2026-03-01T20:00:44.811082763Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.811087488Z [err]      from src.api.main import app as fastapi_app
+2026-03-01T20:00:44.811093138Z [err]    File "/app/src/api/main.py", line 6, in <module>
+2026-03-01T20:00:44.811095154Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-03-01T20:00:44.811101632Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-03-01T20:00:44.811107258Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-03-01T20:00:44.811109738Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+2026-03-01T20:00:44.811112811Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-03-01T20:00:44.811116136Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.811123487Z [err]      module = importlib.import_module(module_str)
+2026-03-01T20:00:44.811125085Z [err]  
+2026-03-01T20:00:44.811131435Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.811139467Z [err]    File "/root/.nix-profile/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-03-01T20:00:44.811151173Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2026-03-01T20:00:44.813070708Z [err]    File "/app/src/database/connection.py", line 9, in <module>
+2026-03-01T20:00:44.813074820Z [err]      engine = create_engine(
+2026-03-01T20:00:44.813079430Z [err]               ^^^^^^^^^^^^^^
+2026-03-01T20:00:44.813083526Z [err]    File "<string>", line 2, in create_engine
+2026-03-01T20:00:44.813087090Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+2026-03-01T20:00:44.813090822Z [err]      return fn(*args, **kwargs)  # type: ignore[no-any-return]
+2026-03-01T20:00:44.813095039Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.813099110Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 548, in create_engine
+2026-03-01T20:00:44.813102805Z [err]      u = _url.make_url(url)
+2026-03-01T20:00:44.813106505Z [err]          ^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.813110167Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 838, in make_url
+2026-03-01T20:00:44.813113793Z [err]      return _parse_url(name_or_url)
+2026-03-01T20:00:44.818227204Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.818231349Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 899, in _parse_url
+2026-03-01T20:00:44.818235103Z [err]      components["port"] = int(components["port"])
+2026-03-01T20:00:44.818239296Z [err]                           ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:44.818243663Z [err]  ValueError: invalid literal for int() with base 10: 'port'
+2026-03-01T20:00:46.087388360Z [inf]  2026-03-01 20:00:46 | INFO     | src.core.logger:setup_logging:73 - Logging configured with level: INFO
+2026-03-01T20:00:46.747365831Z [err]  Traceback (most recent call last):
+2026-03-01T20:00:46.747370759Z [err]    File "/opt/venv/bin/uvicorn", line 8, in <module>
+2026-03-01T20:00:46.747375870Z [err]      sys.exit(main())
+2026-03-01T20:00:46.747382520Z [err]               ^^^^^^
+2026-03-01T20:00:46.747388029Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+2026-03-01T20:00:46.747394717Z [err]      return self.main(*args, **kwargs)
+2026-03-01T20:00:46.747400467Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:46.747406318Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+2026-03-01T20:00:46.747412065Z [err]      rv = self.invoke(ctx)
+2026-03-01T20:00:46.747417613Z [err]           ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:46.747422637Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+2026-03-01T20:00:46.747428091Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2026-03-01T20:00:46.747437079Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:46.747442852Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+2026-03-01T20:00:46.747453223Z [err]      return callback(*args, **kwargs)
+2026-03-01T20:00:46.750885857Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:46.750897524Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 416, in main
+2026-03-01T20:00:46.750915586Z [err]      run(
+2026-03-01T20:00:46.750925111Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+2026-03-01T20:00:46.750931861Z [err]      server.run()
+2026-03-01T20:00:46.750939130Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 61, in run
+2026-03-01T20:00:46.750950590Z [err]      return asyncio.run(self.serve(sockets=sockets))
+2026-03-01T20:00:46.750957627Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:46.750972912Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 190, in run
+2026-03-01T20:00:46.750981327Z [err]      return runner.run(main)
+2026-03-01T20:00:46.750988996Z [err]             ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:46.751003266Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 118, in run
+2026-03-01T20:00:46.751016754Z [err]      return self._loop.run_until_complete(task)
+2026-03-01T20:00:46.755206457Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:46.755210612Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2026-03-01T20:00:46.755215484Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+2026-03-01T20:00:46.755219299Z [err]      config.load()
+2026-03-01T20:00:46.755223408Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/config.py", line 467, in load
+2026-03-01T20:00:46.755227207Z [err]      self.loaded_app = import_from_string(self.app)
+2026-03-01T20:00:46.755232111Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:46.755235829Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+2026-03-01T20:00:46.755239738Z [err]      module = importlib.import_module(module_str)
+2026-03-01T20:00:46.755245772Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:46.755251656Z [err]    File "/root/.nix-profile/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-03-01T20:00:46.755257217Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2026-03-01T20:00:46.758880331Z [err]      return fn(*args, **kwargs)  # type: ignore[no-any-return]
+2026-03-01T20:00:46.759060817Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:46.759065426Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-03-01T20:00:46.759074460Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-03-01T20:00:46.759079380Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-03-01T20:00:46.759083883Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-03-01T20:00:46.759088456Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-03-01T20:00:46.759093687Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-03-01T20:00:46.759098181Z [err]    File "/app/main.py", line 13, in <module>
+2026-03-01T20:00:46.759102855Z [err]      from src.api.main import app as fastapi_app
+2026-03-01T20:00:46.759108009Z [err]    File "/app/src/api/main.py", line 6, in <module>
+2026-03-01T20:00:46.759112724Z [err]      from src.database.connection import init_database, create_admin_user
+2026-03-01T20:00:46.759117123Z [err]    File "/app/src/database/connection.py", line 9, in <module>
+2026-03-01T20:00:46.759121483Z [err]      engine = create_engine(
+2026-03-01T20:00:46.759126204Z [err]               ^^^^^^^^^^^^^^
+2026-03-01T20:00:46.759131153Z [err]    File "<string>", line 2, in create_engine
+2026-03-01T20:00:46.759135557Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+2026-03-01T20:00:46.762580968Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:46.762593351Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 899, in _parse_url
+2026-03-01T20:00:46.762600284Z [err]      components["port"] = int(components["port"])
+2026-03-01T20:00:46.762607546Z [err]                           ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:46.762614088Z [err]  ValueError: invalid literal for int() with base 10: 'port'
+2026-03-01T20:00:46.762764500Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:46.762777766Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 548, in create_engine
+2026-03-01T20:00:46.762788905Z [err]      u = _url.make_url(url)
+2026-03-01T20:00:46.762799513Z [err]          ^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:46.762805695Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 838, in make_url
+2026-03-01T20:00:46.762811950Z [err]      return _parse_url(name_or_url)
+2026-03-01T20:00:48.006504688Z [inf]  2026-03-01 20:00:47 | INFO     | src.core.logger:setup_logging:73 - Logging configured with level: INFO
+2026-03-01T20:00:48.749981490Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+2026-03-01T20:00:48.749988270Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2026-03-01T20:00:48.749995440Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:48.750001973Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+2026-03-01T20:00:48.750009120Z [err]      return callback(*args, **kwargs)
+2026-03-01T20:00:48.750026799Z [err]  Traceback (most recent call last):
+2026-03-01T20:00:48.750031644Z [err]    File "/opt/venv/bin/uvicorn", line 8, in <module>
+2026-03-01T20:00:48.750036570Z [err]      sys.exit(main())
+2026-03-01T20:00:48.750041830Z [err]               ^^^^^^
+2026-03-01T20:00:48.750046313Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+2026-03-01T20:00:48.750052398Z [err]      return self.main(*args, **kwargs)
+2026-03-01T20:00:48.750057182Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:48.750062622Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+2026-03-01T20:00:48.750067049Z [err]      rv = self.invoke(ctx)
+2026-03-01T20:00:48.750071977Z [err]           ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:48.751981790Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:48.751994497Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 416, in main
+2026-03-01T20:00:48.752000119Z [err]      run(
+2026-03-01T20:00:48.752006557Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+2026-03-01T20:00:48.752012441Z [err]      server.run()
+2026-03-01T20:00:48.752018125Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 61, in run
+2026-03-01T20:00:48.752024193Z [err]      return asyncio.run(self.serve(sockets=sockets))
+2026-03-01T20:00:48.752030119Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:48.752036850Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 190, in run
+2026-03-01T20:00:48.752042264Z [err]      return runner.run(main)
+2026-03-01T20:00:48.752048697Z [err]             ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:48.752054227Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 118, in run
+2026-03-01T20:00:48.752059648Z [err]      return self._loop.run_until_complete(task)
+2026-03-01T20:00:48.752067605Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:48.752073208Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2026-03-01T20:00:48.752078208Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+2026-03-01T20:00:48.752084018Z [err]      config.load()
+2026-03-01T20:00:48.752089965Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/config.py", line 467, in load
+2026-03-01T20:00:48.752095986Z [err]      self.loaded_app = import_from_string(self.app)
+2026-03-01T20:00:48.765133907Z [err]                        ^^^^^^^^^^
+2026-03-01T20:00:48.765140187Z [err]  ^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:48.765146250Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+2026-03-01T20:00:48.765151642Z [err]      module = importlib.import_module(module_str)
+2026-03-01T20:00:48.765158205Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:48.765164086Z [err]    File "/root/.nix-profile/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-03-01T20:00:48.765169936Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2026-03-01T20:00:48.767893320Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-03-01T20:00:48.767904153Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-03-01T20:00:48.767910704Z [err]    File "/app/main.py", line 13, in <module>
+2026-03-01T20:00:48.767917206Z [err]      from src.api.main import app as fastapi_app
+2026-03-01T20:00:48.767924153Z [err]    File "/app/src/api/main.py", line 6, in <module>
+2026-03-01T20:00:48.767932303Z [err]      from src.database.connection import init_database, create_admin_user
+2026-03-01T20:00:48.767937221Z [err]    File "/app/src/database/connection.py", line 9, in <module>
+2026-03-01T20:00:48.767943002Z [err]      engine = create_engine(
+2026-03-01T20:00:48.767943413Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:48.767948791Z [err]               ^^^^^^^^^^^^^^
+2026-03-01T20:00:48.767951530Z [err]  ^^^^^^^^^
+2026-03-01T20:00:48.767955020Z [err]    File "<string>", line 2, in create_engine
+2026-03-01T20:00:48.767960001Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+2026-03-01T20:00:48.767961293Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-03-01T20:00:48.767970532Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-03-01T20:00:48.767976833Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-03-01T20:00:48.767992771Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-03-01T20:00:48.773865113Z [err]                           ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:48.773881819Z [err]  ValueError: invalid literal for int() with base 10: 'port'
+2026-03-01T20:00:48.774037166Z [err]      return fn(*args, **kwargs)  # type: ignore[no-any-return]
+2026-03-01T20:00:48.774044050Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:48.774051840Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 548, in create_engine
+2026-03-01T20:00:48.774057719Z [err]      u = _url.make_url(url)
+2026-03-01T20:00:48.774063666Z [err]          ^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:48.774070399Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 838, in make_url
+2026-03-01T20:00:48.774076672Z [err]      return _parse_url(name_or_url)
+2026-03-01T20:00:48.774082749Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:48.774088753Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 899, in _parse_url
+2026-03-01T20:00:48.774095205Z [err]      components["port"] = int(components["port"])
+2026-03-01T20:00:49.916265158Z [inf]  2026-03-01 20:00:49 | INFO     | src.core.logger:setup_logging:73 - Logging configured with level: INFO
+2026-03-01T20:00:50.917207552Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:50.917211231Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:50.917221622Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+2026-03-01T20:00:50.917223754Z [err]  Traceback (most recent call last):
+2026-03-01T20:00:50.917227765Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+2026-03-01T20:00:50.917233523Z [err]      rv = self.invoke(ctx)
+2026-03-01T20:00:50.917245746Z [err]      return callback(*args, **kwargs)
+2026-03-01T20:00:50.917247229Z [err]           ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:50.917247333Z [err]    File "/opt/venv/bin/uvicorn", line 8, in <module>
+2026-03-01T20:00:50.917256910Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+2026-03-01T20:00:50.917289758Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2026-03-01T20:00:50.917294089Z [err]      sys.exit(main())
+2026-03-01T20:00:50.917379159Z [err]               ^^^^^^
+2026-03-01T20:00:50.917395064Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+2026-03-01T20:00:50.917404147Z [err]      return self.main(*args, **kwargs)
+2026-03-01T20:00:50.920469828Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:50.920473841Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 416, in main
+2026-03-01T20:00:50.920477831Z [err]      run(
+2026-03-01T20:00:50.920481854Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+2026-03-01T20:00:50.920486974Z [err]      server.run()
+2026-03-01T20:00:50.920490727Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 61, in run
+2026-03-01T20:00:50.920494365Z [err]      return asyncio.run(self.serve(sockets=sockets))
+2026-03-01T20:00:50.920498881Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:50.920503752Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 190, in run
+2026-03-01T20:00:50.920507827Z [err]      return runner.run(main)
+2026-03-01T20:00:50.920511618Z [err]             ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:50.920515730Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 118, in run
+2026-03-01T20:00:50.920519762Z [err]      return self._loop.run_until_complete(task)
+2026-03-01T20:00:50.924004599Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:50.924051647Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2026-03-01T20:00:50.924064489Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+2026-03-01T20:00:50.924072535Z [err]      config.load()
+2026-03-01T20:00:50.924103729Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+2026-03-01T20:00:50.924112025Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/config.py", line 467, in load
+2026-03-01T20:00:50.924116897Z [err]      module = importlib.import_module(module_str)
+2026-03-01T20:00:50.924122425Z [err]      self.loaded_app = import_from_string(self.app)
+2026-03-01T20:00:50.924132626Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:50.924136514Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:50.924157326Z [err]  ^^^^
+2026-03-01T20:00:50.925099200Z [err]    File "/root/.nix-profile/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-03-01T20:00:50.928112072Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2026-03-01T20:00:50.928118509Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:50.928125588Z [err]  ^^^^^
+2026-03-01T20:00:50.928131855Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-03-01T20:00:50.928138604Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-03-01T20:00:50.928144766Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-03-01T20:00:50.928151392Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-03-01T20:00:50.928158385Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-03-01T20:00:50.928173907Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-03-01T20:00:50.928180983Z [err]    File "/app/main.py", line 13, in <module>
+2026-03-01T20:00:50.928187453Z [err]      from src.api.main import app as fastapi_app
+2026-03-01T20:00:50.928198629Z [err]    File "/app/src/api/main.py", line 6, in <module>
+2026-03-01T20:00:50.928204558Z [err]      from src.database.connection import init_database, create_admin_user
+2026-03-01T20:00:50.928210257Z [err]    File "/app/src/database/connection.py", line 9, in <module>
+2026-03-01T20:00:50.928216023Z [err]      engine = create_engine(
+2026-03-01T20:00:50.931573210Z [err]      components["port"] = int(components["port"])
+2026-03-01T20:00:50.931702078Z [err]               ^^^^^^^^^^^^^^
+2026-03-01T20:00:50.931715007Z [err]    File "<string>", line 2, in create_engine
+2026-03-01T20:00:50.931727790Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+2026-03-01T20:00:50.931735834Z [err]      return fn(*args, **kwargs)  # type: ignore[no-any-return]
+2026-03-01T20:00:50.931744304Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:50.931752420Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 548, in create_engine
+2026-03-01T20:00:50.931762040Z [err]      u = _url.make_url(url)
+2026-03-01T20:00:50.931771255Z [err]          ^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:50.931779356Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 838, in make_url
+2026-03-01T20:00:50.931789214Z [err]      return _parse_url(name_or_url)
+2026-03-01T20:00:50.931798563Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:50.931814032Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 899, in _parse_url
+2026-03-01T20:00:50.935375894Z [err]                           ^^^^^^^^^^^^^^^
+2026-03-01T20:00:50.935382310Z [err]  ^^^^^^^^
+2026-03-01T20:00:50.935388535Z [err]  ValueError: invalid literal for int() with base 10: 'port'
+2026-03-01T20:00:51.896168876Z [inf]  2026-03-01 20:00:51 | INFO     | src.core.logger:setup_logging:73 - Logging configured with level: INFO
+2026-03-01T20:00:52.099735345Z [err]  Traceback (most recent call last):
+2026-03-01T20:00:52.099738655Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2026-03-01T20:00:52.099743721Z [err]    File "/opt/venv/bin/uvicorn", line 8, in <module>
+2026-03-01T20:00:52.099748641Z [err]      sys.exit(main())
+2026-03-01T20:00:52.099755855Z [err]               ^^^^^^
+2026-03-01T20:00:52.099759571Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:52.099761179Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+2026-03-01T20:00:52.099766871Z [err]      return self.main(*args, **kwargs)
+2026-03-01T20:00:52.099768520Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+2026-03-01T20:00:52.099772911Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:52.099776125Z [err]      return callback(*args, **kwargs)
+2026-03-01T20:00:52.099780190Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+2026-03-01T20:00:52.099784367Z [err]      rv = self.invoke(ctx)
+2026-03-01T20:00:52.099789935Z [err]           ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:52.099795138Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+2026-03-01T20:00:52.102874762Z [err]             ^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:52.102886215Z [err]  ^^^^^
+2026-03-01T20:00:52.102894673Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 416, in main
+2026-03-01T20:00:52.102902805Z [err]      run(
+2026-03-01T20:00:52.102909677Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+2026-03-01T20:00:52.102917079Z [err]      server.run()
+2026-03-01T20:00:52.102923649Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 61, in run
+2026-03-01T20:00:52.102930134Z [err]      return asyncio.run(self.serve(sockets=sockets))
+2026-03-01T20:00:52.102937003Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:52.102945492Z [err]  ^^^^^^^^
+2026-03-01T20:00:52.102952005Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 190, in run
+2026-03-01T20:00:52.102958707Z [err]      return runner.run(main)
+2026-03-01T20:00:52.102965485Z [err]             ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:52.104967774Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 118, in run
+2026-03-01T20:00:52.104969406Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:52.104978575Z [err]      return self._loop.run_until_complete(task)
+2026-03-01T20:00:52.104982860Z [err]    File "/root/.nix-profile/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-03-01T20:00:52.104986934Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:52.104994612Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2026-03-01T20:00:52.104998133Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2026-03-01T20:00:52.105001243Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+2026-03-01T20:00:52.105006009Z [err]      config.load()
+2026-03-01T20:00:52.105012853Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/config.py", line 467, in load
+2026-03-01T20:00:52.105017521Z [err]      self.loaded_app = import_from_string(self.app)
+2026-03-01T20:00:52.105021447Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:52.105026579Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+2026-03-01T20:00:52.105030643Z [err]      module = importlib.import_module(module_str)
+2026-03-01T20:00:52.107533932Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:52.107542624Z [err]  ^^^^^
+2026-03-01T20:00:52.107549165Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-03-01T20:00:52.107553683Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-03-01T20:00:52.107558152Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-03-01T20:00:52.107564631Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-03-01T20:00:52.107569556Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-03-01T20:00:52.107574982Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-03-01T20:00:52.107583249Z [err]    File "/app/main.py", line 13, in <module>
+2026-03-01T20:00:52.107589873Z [err]      from src.api.main import app as fastapi_app
+2026-03-01T20:00:52.107595743Z [err]    File "/app/src/api/main.py", line 6, in <module>
+2026-03-01T20:00:52.107601211Z [err]      from src.database.connection import init_database, create_admin_user
+2026-03-01T20:00:52.107607153Z [err]    File "/app/src/database/connection.py", line 9, in <module>
+2026-03-01T20:00:52.107619867Z [err]      engine = create_engine(
+2026-03-01T20:00:52.110424443Z [err]               ^^^^^^^^^^^^^^
+2026-03-01T20:00:52.110432856Z [err]    File "<string>", line 2, in create_engine
+2026-03-01T20:00:52.110438699Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+2026-03-01T20:00:52.110444412Z [err]      return fn(*args, **kwargs)  # type: ignore[no-any-return]
+2026-03-01T20:00:52.110451604Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:52.110457704Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 548, in create_engine
+2026-03-01T20:00:52.110463624Z [err]      u = _url.make_url(url)
+2026-03-01T20:00:52.110468482Z [err]          ^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:52.110473502Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 838, in make_url
+2026-03-01T20:00:52.110478714Z [err]      return _parse_url(name_or_url)
+2026-03-01T20:00:52.110485920Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:52.110491595Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 899, in _parse_url
+2026-03-01T20:00:52.110496060Z [err]      components["port"] = int(components["port"])
+2026-03-01T20:00:52.112112947Z [err]                           ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:52.112123333Z [err]  ValueError: invalid literal for int() with base 10: 'port'
+2026-03-01T20:00:53.826404183Z [inf]  2026-03-01 20:00:53 | INFO     | src.core.logger:setup_logging:73 - Logging configured with level: INFO
+2026-03-01T20:00:54.084075270Z [err]               ^^^^^^
+2026-03-01T20:00:54.084090380Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+2026-03-01T20:00:54.084216633Z [err]  Traceback (most recent call last):
+2026-03-01T20:00:54.084228649Z [err]    File "/opt/venv/bin/uvicorn", line 8, in <module>
+2026-03-01T20:00:54.084237693Z [err]      sys.exit(main())
+2026-03-01T20:00:54.088202238Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+2026-03-01T20:00:54.088213911Z [err]      return callback(*args, **kwargs)
+2026-03-01T20:00:54.088221744Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:54.088228214Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 416, in main
+2026-03-01T20:00:54.088234643Z [err]      run(
+2026-03-01T20:00:54.088243177Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+2026-03-01T20:00:54.088249620Z [err]      server.run()
+2026-03-01T20:00:54.088256116Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 61, in run
+2026-03-01T20:00:54.088266815Z [err]      return asyncio.run(self.serve(sockets=sockets))
+2026-03-01T20:00:54.088273330Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:54.088323740Z [err]      return self.main(*args, **kwargs)
+2026-03-01T20:00:54.088330735Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:54.088337939Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+2026-03-01T20:00:54.088346946Z [err]      rv = self.invoke(ctx)
+2026-03-01T20:00:54.088355055Z [err]           ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:54.088362873Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+2026-03-01T20:00:54.088370639Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2026-03-01T20:00:54.088378271Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:54.092191763Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+2026-03-01T20:00:54.092205831Z [err]      module = importlib.import_module(module_str)
+2026-03-01T20:00:54.092216852Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:54.092216965Z [err]      config.load()
+2026-03-01T20:00:54.092226359Z [err]    File "/root/.nix-profile/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-03-01T20:00:54.092235385Z [err]      return runner.run(main)
+2026-03-01T20:00:54.092235539Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/config.py", line 467, in load
+2026-03-01T20:00:54.092236047Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 190, in run
+2026-03-01T20:00:54.092246689Z [err]      self.loaded_app = import_from_string(self.app)
+2026-03-01T20:00:54.092249438Z [err]             ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:54.092255347Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:54.092260298Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 118, in run
+2026-03-01T20:00:54.092266651Z [err]      return self._loop.run_until_complete(task)
+2026-03-01T20:00:54.092272541Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:54.092278629Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2026-03-01T20:00:54.092284949Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+2026-03-01T20:00:54.094477279Z [err]      engine = create_engine(
+2026-03-01T20:00:54.094503070Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2026-03-01T20:00:54.094510492Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:54.094517279Z [err]  ^^^^^^^^^^^^
+2026-03-01T20:00:54.094522711Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-03-01T20:00:54.094530307Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-03-01T20:00:54.094535827Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-03-01T20:00:54.094541604Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-03-01T20:00:54.094547737Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-03-01T20:00:54.094554148Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-03-01T20:00:54.094559649Z [err]    File "/app/main.py", line 13, in <module>
+2026-03-01T20:00:54.094564645Z [err]      from src.api.main import app as fastapi_app
+2026-03-01T20:00:54.094569750Z [err]    File "/app/src/api/main.py", line 6, in <module>
+2026-03-01T20:00:54.094574760Z [err]      from src.database.connection import init_database, create_admin_user
+2026-03-01T20:00:54.094581705Z [err]    File "/app/src/database/connection.py", line 9, in <module>
+2026-03-01T20:00:54.097024759Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 899, in _parse_url
+2026-03-01T20:00:54.097036812Z [err]      components["port"] = int(components["port"])
+2026-03-01T20:00:54.097044114Z [err]                           ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:54.097052101Z [err]  ValueError: invalid literal for int() with base 10: 'port'
+2026-03-01T20:00:54.097055879Z [err]               ^^^^^^^^^^^^^^
+2026-03-01T20:00:54.097063499Z [err]    File "<string>", line 2, in create_engine
+2026-03-01T20:00:54.097068606Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+2026-03-01T20:00:54.097073264Z [err]      return fn(*args, **kwargs)  # type: ignore[no-any-return]
+2026-03-01T20:00:54.097078321Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:54.097084020Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 548, in create_engine
+2026-03-01T20:00:54.097089775Z [err]      u = _url.make_url(url)
+2026-03-01T20:00:54.097094964Z [err]          ^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:54.097100139Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 838, in make_url
+2026-03-01T20:00:54.097105015Z [err]      return _parse_url(name_or_url)
+2026-03-01T20:00:54.097110766Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:55.868123838Z [inf]  2026-03-01 20:00:55 | INFO     | src.core.logger:setup_logging:73 - Logging configured with level: INFO
+2026-03-01T20:00:56.108396726Z [err]  Traceback (most recent call last):
+2026-03-01T20:00:56.108404514Z [err]    File "/opt/venv/bin/uvicorn", line 8, in <module>
+2026-03-01T20:00:56.108410775Z [err]      sys.exit(main())
+2026-03-01T20:00:56.108416223Z [err]               ^^^^^^
+2026-03-01T20:00:56.108421391Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+2026-03-01T20:00:56.108425953Z [err]      return self.main(*args, **kwargs)
+2026-03-01T20:00:56.108430662Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.108437212Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+2026-03-01T20:00:56.108441781Z [err]      rv = self.invoke(ctx)
+2026-03-01T20:00:56.108446490Z [err]           ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.108450864Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+2026-03-01T20:00:56.108455165Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2026-03-01T20:00:56.108459479Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.108464034Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+2026-03-01T20:00:56.110021618Z [err]      return callback(*args, **kwargs)
+2026-03-01T20:00:56.110033293Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.110040375Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 416, in main
+2026-03-01T20:00:56.110046373Z [err]      run(
+2026-03-01T20:00:56.110052905Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+2026-03-01T20:00:56.110059208Z [err]      server.run()
+2026-03-01T20:00:56.110066373Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 61, in run
+2026-03-01T20:00:56.110072462Z [err]      return asyncio.run(self.serve(sockets=sockets))
+2026-03-01T20:00:56.110078060Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.110083920Z [err]  ^^^^^^^^^^^^
+2026-03-01T20:00:56.110090988Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 190, in run
+2026-03-01T20:00:56.110095822Z [err]      return runner.run(main)
+2026-03-01T20:00:56.110100497Z [err]             ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.110104842Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 118, in run
+2026-03-01T20:00:56.112682305Z [err]      return self._loop.run_until_complete(task)
+2026-03-01T20:00:56.112691320Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.112699870Z [err]  ^^^^^
+2026-03-01T20:00:56.112704594Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2026-03-01T20:00:56.112709187Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+2026-03-01T20:00:56.112716631Z [err]      config.load()
+2026-03-01T20:00:56.112722478Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/config.py", line 467, in load
+2026-03-01T20:00:56.112727432Z [err]      self.loaded_app = import_from_string(self.app)
+2026-03-01T20:00:56.112732045Z [err]                        ^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.112736867Z [err]  ^^^^^^^^^
+2026-03-01T20:00:56.112741450Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+2026-03-01T20:00:56.112748064Z [err]      module = importlib.import_module(module_str)
+2026-03-01T20:00:56.114899834Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-03-01T20:00:56.114904475Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.114911517Z [err]  ^^^^^^^^
+2026-03-01T20:00:56.114916150Z [err]    File "/root/.nix-profile/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-03-01T20:00:56.114920283Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2026-03-01T20:00:56.114924353Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.114928685Z [err]  ^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.114932957Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-03-01T20:00:56.114937242Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-03-01T20:00:56.114941275Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-03-01T20:00:56.114946563Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-03-01T20:00:56.118070511Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-03-01T20:00:56.118075708Z [err]    File "/app/main.py", line 13, in <module>
+2026-03-01T20:00:56.118082656Z [err]      from src.api.main import app as fastapi_app
+2026-03-01T20:00:56.118087865Z [err]    File "/app/src/api/main.py", line 6, in <module>
+2026-03-01T20:00:56.118093141Z [err]      from src.database.connection import init_database, create_admin_user
+2026-03-01T20:00:56.118099120Z [err]    File "/app/src/database/connection.py", line 9, in <module>
+2026-03-01T20:00:56.118104595Z [err]      engine = create_engine(
+2026-03-01T20:00:56.118110819Z [err]               ^^^^^^^^^^^^^^
+2026-03-01T20:00:56.118116122Z [err]    File "<string>", line 2, in create_engine
+2026-03-01T20:00:56.118120456Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+2026-03-01T20:00:56.118124807Z [err]      return fn(*args, **kwargs)  # type: ignore[no-any-return]
+2026-03-01T20:00:56.118129705Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.118133927Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 548, in create_engine
+2026-03-01T20:00:56.118137618Z [err]      u = _url.make_url(url)
+2026-03-01T20:00:56.118142200Z [err]          ^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.118147579Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 838, in make_url
+2026-03-01T20:00:56.118152149Z [err]      return _parse_url(name_or_url)
+2026-03-01T20:00:56.120774091Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.120783093Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 899, in _parse_url
+2026-03-01T20:00:56.120791014Z [err]      components["port"] = int(components["port"])
+2026-03-01T20:00:56.120799222Z [err]                           ^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:56.120807675Z [err]  ^^^^^
+2026-03-01T20:00:56.120818549Z [err]  ValueError: invalid literal for int() with base 10: 'port'
+2026-03-01T20:00:57.889622817Z [inf]  2026-03-01 20:00:57 | INFO     | src.core.logger:setup_logging:73 - Logging configured with level: INFO
+2026-03-01T20:00:58.133287231Z [err]  Traceback (most recent call last):
+2026-03-01T20:00:58.133299473Z [err]    File "/opt/venv/bin/uvicorn", line 8, in <module>
+2026-03-01T20:00:58.133306081Z [err]      sys.exit(main())
+2026-03-01T20:00:58.133312277Z [err]               ^^^^^^
+2026-03-01T20:00:58.133319305Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+2026-03-01T20:00:58.133326660Z [err]      return self.main(*args, **kwargs)
+2026-03-01T20:00:58.133333198Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:58.133339619Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+2026-03-01T20:00:58.133347066Z [err]      rv = self.invoke(ctx)
+2026-03-01T20:00:58.133354493Z [err]           ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:58.133361284Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+2026-03-01T20:00:58.133370072Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2026-03-01T20:00:58.133376954Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:58.133383839Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+2026-03-01T20:00:58.133391119Z [err]      return callback(*args, **kwargs)
+2026-03-01T20:00:58.133398674Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:58.133405578Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 416, in main
+2026-03-01T20:00:58.133413317Z [err]      run(
+2026-03-01T20:00:58.135511661Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+2026-03-01T20:00:58.135519705Z [err]      server.run()
+2026-03-01T20:00:58.135525461Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 61, in run
+2026-03-01T20:00:58.135531253Z [err]      return asyncio.run(self.serve(sockets=sockets))
+2026-03-01T20:00:58.135537498Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:58.135543518Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 190, in run
+2026-03-01T20:00:58.135549289Z [err]      return runner.run(main)
+2026-03-01T20:00:58.135554568Z [err]             ^^^^^^^^^^^^^^^^
+2026-03-01T20:00:58.135560667Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 118, in run
+2026-03-01T20:00:58.135567141Z [err]      return self._loop.run_until_complete(task)
+2026-03-01T20:00:58.135574735Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:58.135580036Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2026-03-01T20:00:58.135586112Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+2026-03-01T20:00:58.135592047Z [err]      config.load()
+2026-03-01T20:00:58.135597274Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/config.py", line 467, in load
+2026-03-01T20:00:58.135602838Z [err]      self.loaded_app = import_from_string(self.app)
+2026-03-01T20:00:58.135608691Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:58.135614205Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+2026-03-01T20:00:58.135624657Z [err]      module = importlib.import_module(module_str)
+2026-03-01T20:00:58.135631184Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:58.135637583Z [err]    File "/root/.nix-profile/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-03-01T20:00:58.141971886Z [err]               ^^^^^^^^^^^^^^
+2026-03-01T20:00:58.141992930Z [err]    File "<string>", line 2, in create_engine
+2026-03-01T20:00:58.142005199Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+2026-03-01T20:00:58.142015716Z [err]      return fn(*args, **kwargs)  # type: ignore[no-any-return]
+2026-03-01T20:00:58.142167642Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2026-03-01T20:00:58.142173670Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:58.142180891Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-03-01T20:00:58.142187787Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-03-01T20:00:58.142194219Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-03-01T20:00:58.142200562Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-03-01T20:00:58.142207663Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-03-01T20:00:58.142213410Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-03-01T20:00:58.142219547Z [err]    File "/app/main.py", line 13, in <module>
+2026-03-01T20:00:58.142225811Z [err]      from src.api.main import app as fastapi_app
+2026-03-01T20:00:58.142231659Z [err]    File "/app/src/api/main.py", line 6, in <module>
+2026-03-01T20:00:58.142237904Z [err]      from src.database.connection import init_database, create_admin_user
+2026-03-01T20:00:58.142243340Z [err]    File "/app/src/database/connection.py", line 9, in <module>
+2026-03-01T20:00:58.142249829Z [err]      engine = create_engine(
+2026-03-01T20:00:58.147402595Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:58.147408085Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 548, in create_engine
+2026-03-01T20:00:58.147413209Z [err]      u = _url.make_url(url)
+2026-03-01T20:00:58.147418906Z [err]          ^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:58.147425248Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 838, in make_url
+2026-03-01T20:00:58.147430310Z [err]      return _parse_url(name_or_url)
+2026-03-01T20:00:58.147435621Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:58.147441074Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 899, in _parse_url
+2026-03-01T20:00:58.147446148Z [err]      components["port"] = int(components["port"])
+2026-03-01T20:00:58.147451634Z [err]                           ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:00:58.147456482Z [err]  ValueError: invalid literal for int() with base 10: 'port'
+2026-03-01T20:01:00.286945894Z [err]      return self.main(*args, **kwargs)
+2026-03-01T20:01:00.286954729Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:00.286961915Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+2026-03-01T20:01:00.286975540Z [err]    File "/opt/venv/bin/uvicorn", line 8, in <module>
+2026-03-01T20:01:00.286981402Z [inf]  2026-03-01 20:01:00 | INFO     | src.core.logger:setup_logging:73 - Logging configured with level: INFO
+2026-03-01T20:01:00.286982277Z [err]      sys.exit(main())
+2026-03-01T20:01:00.286988845Z [err]  Traceback (most recent call last):
+2026-03-01T20:01:00.286988980Z [err]               ^^^^^^
+2026-03-01T20:01:00.286995830Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+2026-03-01T20:01:00.287056132Z [err]      rv = self.invoke(ctx)
+2026-03-01T20:01:00.287064126Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:00.287068904Z [err]           ^^^^^^^^^^^^^^^^
+2026-03-01T20:01:00.287074346Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 416, in main
+2026-03-01T20:01:00.287078196Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+2026-03-01T20:01:00.287084295Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2026-03-01T20:01:00.287093824Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:00.287101330Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+2026-03-01T20:01:00.287107199Z [err]      return callback(*args, **kwargs)
+2026-03-01T20:01:01.329839745Z [err]      run(
+2026-03-01T20:01:01.329845744Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+2026-03-01T20:01:01.329851076Z [err]      server.run()
+2026-03-01T20:01:01.329856043Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 61, in run
+2026-03-01T20:01:01.329861306Z [err]      return asyncio.run(self.serve(sockets=sockets))
+2026-03-01T20:01:01.329866512Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:01.329871722Z [err]  ^^^^
+2026-03-01T20:01:01.329876705Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 190, in run
+2026-03-01T20:01:01.329882611Z [err]      return runner.run(main)
+2026-03-01T20:01:01.329887790Z [err]             ^^^^^^^^^^^^^^^^
+2026-03-01T20:01:01.329892937Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 118, in run
+2026-03-01T20:01:01.329898460Z [err]      return self._loop.run_until_complete(task)
+2026-03-01T20:01:01.938019231Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:01.938025442Z [err]  ^^^^^^
+2026-03-01T20:01:01.938031504Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2026-03-01T20:01:01.938038507Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+2026-03-01T20:01:01.938044005Z [err]      config.load()
+2026-03-01T20:01:01.938050049Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/config.py", line 467, in load
+2026-03-01T20:01:01.938057756Z [err]      self.loaded_app = import_from_string(self.app)
+2026-03-01T20:01:01.938064092Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:01.938071143Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+2026-03-01T20:01:01.938077234Z [err]      module = importlib.import_module(module_str)
+2026-03-01T20:01:01.938086884Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:01.939021595Z [err]  ^^^
+2026-03-01T20:01:01.939027249Z [err]    File "/root/.nix-profile/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-03-01T20:01:01.939032751Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2026-03-01T20:01:01.939038378Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:01.939044777Z [err]  ^^^^^^^^
+2026-03-01T20:01:01.939051125Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-03-01T20:01:01.939056077Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-03-01T20:01:01.939061667Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-03-01T20:01:01.939066472Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-03-01T20:01:01.939072294Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-03-01T20:01:01.939078068Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-03-01T20:01:01.939083065Z [err]    File "/app/main.py", line 13, in <module>
+2026-03-01T20:01:01.939087489Z [err]      from src.api.main import app as fastapi_app
+2026-03-01T20:01:01.939093214Z [err]    File "/app/src/api/main.py", line 6, in <module>
+2026-03-01T20:01:01.939097917Z [err]      from src.database.connection import init_database, create_admin_user
+2026-03-01T20:01:01.939103504Z [err]    File "/app/src/database/connection.py", line 9, in <module>
+2026-03-01T20:01:01.940093337Z [err]      engine = create_engine(
+2026-03-01T20:01:01.940100682Z [err]               ^^^^^^^^^^^^^^
+2026-03-01T20:01:01.940108062Z [err]    File "<string>", line 2, in create_engine
+2026-03-01T20:01:01.940116016Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+2026-03-01T20:01:01.940122983Z [err]      return fn(*args, **kwargs)  # type: ignore[no-any-return]
+2026-03-01T20:01:01.940128981Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:01.940134545Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 548, in create_engine
+2026-03-01T20:01:01.940140459Z [err]      u = _url.make_url(url)
+2026-03-01T20:01:01.940146593Z [err]          ^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:01.940153510Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 838, in make_url
+2026-03-01T20:01:01.940160644Z [err]      return _parse_url(name_or_url)
+2026-03-01T20:01:01.940166469Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:01.942709890Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 899, in _parse_url
+2026-03-01T20:01:01.942717884Z [err]      components["port"] = int(components["port"])
+2026-03-01T20:01:01.942725304Z [err]                           ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:01.942732301Z [err]  ValueError: invalid literal for int() with base 10: 'port'
+2026-03-01T20:01:01.989330132Z [inf]  2026-03-01 20:01:01 | INFO     | src.core.logger:setup_logging:73 - Logging configured with level: INFO
+2026-03-01T20:01:02.195565347Z [err]  Traceback (most recent call last):
+2026-03-01T20:01:02.195581410Z [err]    File "/opt/venv/bin/uvicorn", line 8, in <module>
+2026-03-01T20:01:02.195589757Z [err]      sys.exit(main())
+2026-03-01T20:01:02.195597042Z [err]               ^^^^^^
+2026-03-01T20:01:02.195603136Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+2026-03-01T20:01:02.195610538Z [err]      return self.main(*args, **kwargs)
+2026-03-01T20:01:02.195617207Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:02.195623992Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+2026-03-01T20:01:02.195631875Z [err]      rv = self.invoke(ctx)
+2026-03-01T20:01:02.195638601Z [err]           ^^^^^^^^^^^^^^^^
+2026-03-01T20:01:02.195645141Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+2026-03-01T20:01:02.195652262Z [err]      return ctx.invoke(self.callback, **ctx.params)
+2026-03-01T20:01:02.195659019Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:02.195665203Z [err]    File "/opt/venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+2026-03-01T20:01:02.195670547Z [err]      return callback(*args, **kwargs)
+2026-03-01T20:01:02.195676595Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:02.195682647Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 416, in main
+2026-03-01T20:01:02.199428337Z [err]      run(
+2026-03-01T20:01:02.199436649Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+2026-03-01T20:01:02.199443791Z [err]      server.run()
+2026-03-01T20:01:02.199450672Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 61, in run
+2026-03-01T20:01:02.199458200Z [err]      return asyncio.run(self.serve(sockets=sockets))
+2026-03-01T20:01:02.199464500Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:02.199470664Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 190, in run
+2026-03-01T20:01:02.199477058Z [err]      return runner.run(main)
+2026-03-01T20:01:02.199484200Z [err]             ^^^^^^^^^^^^^^^^
+2026-03-01T20:01:02.199490250Z [err]    File "/root/.nix-profile/lib/python3.11/asyncio/runners.py", line 118, in run
+2026-03-01T20:01:02.199497430Z [err]      return self._loop.run_until_complete(task)
+2026-03-01T20:01:02.199504212Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:02.199510772Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2026-03-01T20:01:02.199516751Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+2026-03-01T20:01:02.202041123Z [err]      config.load()
+2026-03-01T20:01:02.202053332Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/config.py", line 467, in load
+2026-03-01T20:01:02.202061028Z [err]      self.loaded_app = import_from_string(self.app)
+2026-03-01T20:01:02.202068407Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:02.202075380Z [err]    File "/opt/venv/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+2026-03-01T20:01:02.202082717Z [err]      module = importlib.import_module(module_str)
+2026-03-01T20:01:02.202090999Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:02.202098049Z [err]    File "/root/.nix-profile/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-03-01T20:01:02.202106184Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
+2026-03-01T20:01:02.202113883Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:02.209697520Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-03-01T20:01:02.209706740Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-03-01T20:01:02.209713869Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-03-01T20:01:02.209720877Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-03-01T20:01:02.209727943Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-03-01T20:01:02.209733807Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-03-01T20:01:02.209741451Z [err]    File "/app/main.py", line 13, in <module>
+2026-03-01T20:01:02.209748420Z [err]      from src.api.main import app as fastapi_app
+2026-03-01T20:01:02.209754240Z [err]    File "/app/src/api/main.py", line 6, in <module>
+2026-03-01T20:01:02.209760605Z [err]      from src.database.connection import init_database, create_admin_user
+2026-03-01T20:01:02.209766437Z [err]    File "/app/src/database/connection.py", line 9, in <module>
+2026-03-01T20:01:02.209771928Z [err]      engine = create_engine(
+2026-03-01T20:01:02.209779353Z [err]               ^^^^^^^^^^^^^^
+2026-03-01T20:01:02.209785179Z [err]    File "<string>", line 2, in create_engine
+2026-03-01T20:01:02.209792546Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+2026-03-01T20:01:02.209799979Z [err]      return fn(*args, **kwargs)  # type: ignore[no-any-return]
+2026-03-01T20:01:02.209805531Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:02.209811428Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 548, in create_engine
+2026-03-01T20:01:02.213113698Z [err]      u = _url.make_url(url)
+2026-03-01T20:01:02.213122036Z [err]          ^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:02.213128023Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 838, in make_url
+2026-03-01T20:01:02.213133476Z [err]      return _parse_url(name_or_url)
+2026-03-01T20:01:02.213139492Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:02.213145624Z [err]    File "/opt/venv/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 899, in _parse_url
+2026-03-01T20:01:02.213150402Z [err]      components["port"] = int(components["port"])
+2026-03-01T20:01:02.213156409Z [err]                           ^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-01T20:01:02.213162058Z [err]  ValueError: invalid literal for int() with base 10: 'port'

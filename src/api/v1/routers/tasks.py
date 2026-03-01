@@ -5,7 +5,7 @@ from typing import Dict, Any
 from src.database.connection import get_db
 from src.services.discovery.discovery_service import discovery_service
 from src.services.enrichment.enrichment_service import enrichment_service
-from src.services.ai.ai_service import ai_service
+from src.services.ai import ai_service
 from src.services.email.email_service import email_service
 
 
@@ -13,27 +13,26 @@ router = APIRouter(prefix="/tasks", tags=["Tasks"])
 
 
 @router.post(
-    "/discover-businesses-background", 
+    "/discover-businesses-background",
     response_model=Dict[str, Any]
 )
-
 async def discover_businesses_background(
     niche: str = Query(
-        ..., 
+        ...,
         description="Business niche/industry to search for"
     ),
     location: str = Query(
-        ..., 
+        ...,
         description="Location to search in"
     ),
     count: int = Query(
-        10, 
-        ge=1, 
-        le=100, 
+        10,
+        ge=1,
+        le=100,
         description="Number of businesses to return"
     ),
     provider: str = Query(
-        "mock", 
+        "mock",
         description="Discovery provider to use"
     ),
     db: Session = Depends(get_db)
@@ -76,7 +75,7 @@ async def enrich_contacts_background(
             provider_type=provider
         )
         return {
-            "status": "completed", 
+            "status": "completed",
             "result": task_result,
             "task_type": "contact_enrichment"
         }
@@ -89,11 +88,11 @@ async def generate_outreach_background(
     business_id: int,
     lead_id: int,
     message_type: str = Query(
-        "cold_email", 
+        "cold_email",
         description="Type of outreach message to generate"
     ),
     provider: str = Query(
-        "mock", 
+        "mock",
         description="AI provider to use for generation"
     ),
     db: Session = Depends(get_db)
@@ -123,7 +122,7 @@ async def generate_outreach_background(
 async def send_email_background(
     outreach_id: int,
     provider: str = Query(
-        "mock", 
+        "mock",
         description="Email provider to use for sending"
     ),
     db: Session = Depends(get_db)
@@ -165,5 +164,6 @@ async def get_task_status(
             "result": "Task completed successfully",
             "progress": 100
         }
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

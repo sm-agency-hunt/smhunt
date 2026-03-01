@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+﻿from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from typing import List
 
 from src.database.connection import get_db
-from src.services.ai.ai_service import ai_service
+from src.services.ai import ai_service
 from src.api.v1.schemas.outreach import OutreachMessage
 
 
