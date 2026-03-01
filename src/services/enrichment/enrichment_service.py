@@ -131,3 +131,7 @@ class EnrichmentService:
             except Exception as fallback_error:
                 log.error(f"Fallback also failed: {fallback_error}")
                 return business_data
+
+
+# Create a singleton instance for import
+enrichment_service = EnrichmentService()

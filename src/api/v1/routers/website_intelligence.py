@@ -12,14 +12,15 @@ router = APIRouter(
 )
 
 
-@
-
 @router.get("/analyze", response_model=Dict[str, Any])
 async def analyze_website(
     url: str = Query(..., description="URL of the website to analyze"),
     analysis_type: str = Query(
         "full", 
-        description="Type of analysis to perform: full, tech_stack, contact_info, social_links"
+        description=(
+            "Type of analysis to perform: full, tech_stack, "
+            "contact_info, social_links"
+        )
     ),
     provider: str = Query(
         "mock", 
@@ -28,7 +29,8 @@ async def analyze_website(
     db: Session = Depends(get_db)
 ):
     """
-    Analyze a website for technology stack, contact information, and other intelligence
+    Analyze a website for technology stack, contact information, 
+    and other intelligence
     """
     try:
         analysis_result = await analysis_service.analyze_website(
@@ -43,7 +45,10 @@ async def analyze_website(
 
 @router.get("/extract-contact-info", response_model=Dict[str, Any])
 async def extract_contact_info(
-    url: str = Query(..., description="URL of the website to extract contact info from"),
+    url: str = Query(
+        ..., 
+        description="URL of the website to extract contact info from"
+    ),
     provider: str = Query(
         "mock", 
         description="Extraction provider to use"
@@ -65,7 +70,10 @@ async def extract_contact_info(
 
 @router.get("/get-tech-stack", response_model=Dict[str, Any])
 async def get_tech_stack(
-    url: str = Query(..., description="URL of the website to analyze technology stack"),
+    url: str = Query(
+        ..., 
+        description="URL of the website to analyze technology stack"
+    ),
     provider: str = Query(
         "mock", 
         description="Technology detection provider to use"
@@ -87,7 +95,10 @@ async def get_tech_stack(
 
 @router.get("/find-social-links", response_model=Dict[str, Any])
 async def find_social_links(
-    url: str = Query(..., description="URL of the website to find social links from"),
+    url: str = Query(
+        ..., 
+        description="URL of the website to find social links from"
+    ),
     provider: str = Query(
         "mock", 
         description="Link extraction provider to use"

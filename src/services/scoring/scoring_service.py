@@ -282,3 +282,7 @@ class ScoringService:
             return PriorityLevel.MEDIUM
         else:
             return PriorityLevel.LOW
+
+
+# Create a singleton instance for import
+scoring_service = ScoringService()

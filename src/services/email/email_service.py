@@ -5,7 +5,10 @@ from typing import Dict
 from src.core.config import settings
 from src.core.logger import log
 from src.services.providers.email_providers import (
-    SendGridProvider, MailgunProvider, SMTPProvider, MockEmailProvider
+    SendGridProvider,
+    MailgunProvider,
+    SMTPProvider,
+    MockEmailProvider
 )
 
 
@@ -13,16 +16,18 @@ class EmailService:
     """Handles email sending and tracking"""
 
     def __init__(self):
-        self.smtp_server = getattr(settings, 'SMTP_SERVER', 'smtp.gmail.com')
+        self.smtp_server = getattr(
+            settings, 'SMTP_SERVER', 'smtp.gmail.com'
+        )
         self.smtp_port = getattr(settings, 'SMTP_PORT', 587)
         self.sender_email = getattr(settings, 'SENDER_EMAIL', '')
         self.sender_password = getattr(settings, 'SENDER_PASSWORD', '')
 
     async def send_email(
-        self, 
-        recipient: str, 
-        subject: str, 
-        body: str, 
+        self,
+        recipient: str,
+        subject: str,
+        body: str,
         provider_type: str = "smtp"
     ) -> Dict:
         """
@@ -41,13 +46,15 @@ class EmailService:
                 )  # Use SMTP
             else:  # default to mock
                 provider = MockEmailProvider()
-    
+
             async with provider:
                 result = await provider.send_email(
-                    recipient=recipient, subject=subject, body=body,
+                    recipient=recipient,
+                    subject=subject,
+                    body=body,
                     sender=self.sender_email
                 )
-    
+
             log.info(
                 f"Email sent to {recipient} "
                 f"using {provider_type} provider"
@@ -59,18 +66,22 @@ class EmailService:
             try:
                 async with MockEmailProvider() as provider:
                     result = await provider.send_email(
-                        recipient=recipient, subject=subject, body=body,
+                        recipient=recipient,
+                        subject=subject,
+                        body=body,
                         sender=self.sender_email
                     )
                 log.info(
-                    f"Using fallback mock provider for email to {recipient}"
+                    f"Using fallback mock provider for "
+                    f"email to {recipient}"
                 )
                 return result
             except Exception as fallback_error:
                 log.error(f"Fallback also failed: {fallback_error}")
                 return {
                     "success": False,
-                    "message": f"Failed to send email to {recipient}: {str(e)}",
+                    "message": f"Failed to send email to {recipient}: "
+                    f"{str(e)}",
                     "recipient": recipient,
                     "status": "failed"
                 }
@@ -106,3 +117,7 @@ class EmailService:
         except Exception as e:
             log.error(f"Error handling bounce for {message_id}: {str(e)}")
             return False
+
+
+# Create a singleton instance for import
+email_service = EmailService()

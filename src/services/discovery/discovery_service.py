@@ -16,15 +16,15 @@ class DiscoveryService:
         self.session = None
 
     async def discover_businesses(
-        self, 
-        niche: str, 
-        location: str, 
-        count: int = 10, 
+        self,
+        niche: str,
+        location: str,
+        count: int = 10,
         provider_type: str = "mock"
     ) -> List[Dict]:
         """
         Discover businesses based on niche and location
-        Supports different providers: google_maps, yelp, 
+        Supports different providers: google_maps, yelp,
         yellow_pages, industry_directory, mock
         """
         try:
@@ -46,8 +46,8 @@ class DiscoveryService:
                 )
 
             log.info(
-                f"Discovered {len(businesses)} businesses in {location} for "
-                f"{niche} niche using {provider_type} provider"
+                f"Found {len(businesses)} businesses "
+                f"in {location} for {niche} niche using {provider_type}"
             )
             return businesses
         except Exception as e:
@@ -95,10 +95,10 @@ class DiscoveryService:
             return False
 
     async def search_competitors(
-        self, 
-        business_name: str, 
-        location: str, 
-        count: int = 10, 
+        self,
+        business_name: str,
+        location: str,
+        count: int = 10,
         provider_type: str = "mock"
     ) -> List[Dict]:
         """
@@ -124,7 +124,7 @@ class DiscoveryService:
 
             log.info(
                 f"Found {len(competitors)} competitors for {business_name} "
-                f"in {location} using {provider_type} provider"
+                f"in {location} with {provider_type}"
             )
             return competitors[:count]
         except Exception as e:
@@ -133,7 +133,8 @@ class DiscoveryService:
             try:
                 async with MockProvider() as provider:
                     competitors = await provider.search(
-                        f"{business_name} competitors in {location}", count=count
+                        f"{business_name} competitors in {location}",
+                        count=count
                     )
                 log.info(
                     f"Using fallback mock provider, "
@@ -143,3 +144,7 @@ class DiscoveryService:
             except Exception as fallback_error:
                 log.error(f"Fallback also failed: {fallback_error}")
                 return []
+
+
+# Create a singleton instance for import
+discovery_service = DiscoveryService()
