@@ -18,6 +18,7 @@ sqlalchemy>=2.0.23
 # Web Scraping & Analysis
 requests>=2.31.0
 beautifulsoup4>=4.12.2
+aiohttp>=3.9.0
 # selenium>=4.15.2     # Optional
 # playwright>=1.40.0   # Optional
 
