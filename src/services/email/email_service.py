@@ -17,11 +17,12 @@ class EmailService:
 
     def __init__(self):
         self.smtp_server = getattr(
-            settings, 'SMTP_SERVER', 'smtp.gmail.com'
+            settings, 'SMTP_HOST', 'smtp.sendgrid.net'
         )
         self.smtp_port = getattr(settings, 'SMTP_PORT', 587)
-        self.sender_email = getattr(settings, 'SENDER_EMAIL', '')
-        self.sender_password = getattr(settings, 'SENDER_PASSWORD', '')
+        self.sender_email = (settings.DEFAULT_FROM_EMAIL or
+                             'noreply@smhunt.online')
+        self.sender_password = settings.SMTP_PASSWORD or ''
 
     async def send_email(
         self,
@@ -34,6 +35,10 @@ class EmailService:
         Send email to recipient
         Supports different providers: sendgrid, mailgun, smtp, mock
         """
+        # If SMTP password is not configured, default to mock provider
+        if provider_type == "smtp" and not self.sender_password:
+            provider_type = "mock"
+
         try:
             # Select provider based on type
             if provider_type == "sendgrid":
