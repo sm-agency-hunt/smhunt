@@ -57,11 +57,18 @@ async def startup_event():
 
         # Only initialize database if not in Vercel serverless environment
         if not os.getenv("VERCEL"):
-            # Initialize database
-            init_database()
+            try:
+                # Initialize database
+                init_database()
 
-            # Create admin user
-            create_admin_user()
+                # Create admin user
+                create_admin_user()
+            except Exception as db_error:
+                # Handle duplicate table/index errors gracefully
+                if "already exists" in str(db_error):
+                    log.warning("Database tables already exist")
+                else:
+                    raise
 
         log.info("SMHunt application started successfully")
 
