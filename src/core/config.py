@@ -1,3 +1,4 @@
+import os
 from pydantic_settings import BaseSettings
 from typing import Optional
 
@@ -10,7 +11,7 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "INFO"
 
     # Database Configuration
-    DATABASE_URL: str
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./smhunt.db")
     DATABASE_POOL_SIZE: int = 20
     DATABASE_MAX_OVERFLOW: int = 30
 

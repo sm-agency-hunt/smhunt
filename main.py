@@ -28,7 +28,7 @@ if __name__ == "__main__":
     debug = os.getenv("DEBUG", "True").lower() == "true"
 
     uvicorn.run(
-        app,  # Use the actual app object instead of string reference
+        "src.api.main:app",  # Use string reference for proper reloading
         host="0.0.0.0",
         port=int(os.getenv("PORT", 8000)),
         reload=debug,

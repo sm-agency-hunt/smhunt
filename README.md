@@ -138,6 +138,7 @@ gunicorn src.api.main:app --workers 4 --worker-class uvicorn.workers.UvicornWork
 ```
 
 #### Cloud Platforms
+- **Render**: Recommended platform (see [render-deploy.md](render-deploy.md))
 - **AWS**: Elastic Beanstalk or ECS
 - **Google Cloud**: Cloud Run or GKE
 - **Azure**: App Service or AKS
