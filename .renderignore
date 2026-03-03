@@ -1,9 +1,33 @@
+# Ignore frontend directory (not needed for backend)
 frontend/
 node_modules/
+
+# Ignore documentation
 *.md
+!README.md
+
+# Ignore environment files
 .env
 .env.*
+.env.local
+.env.production
+
+# Ignore logs and temp files
 logs/
-.dockerignore
+*.log
+tmp/
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore git files
+.git/
 .gitignore
-error.txt
+
+# Ignore Docker files (using separate config)
+docker/
+Dockerfile
+docker-compose.yml
