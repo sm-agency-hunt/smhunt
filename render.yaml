@@ -1,8 +1,9 @@
 services:
+  # Backend Web Service
   - type: web
     name: smhunt-backend
     runtime: python
-    buildCommand: "cd /opt/render/project && pip install -r requirements.txt"
+    buildCommand: "pip install -r requirements.txt"
     startCommand: "uvicorn src.api.main:app --host 0.0.0.0 --port $PORT"
     envVars:
       - key: DATABASE_URL
@@ -15,5 +16,7 @@ services:
         value: "INFO"
       - key: PYTHON_VERSION
         value: "3.11.9"
-      - key: DISABLE_NODEJS_CHECKS
-        value: "true"
+    disk:
+      name: logs
+      mountPath: /app/logs
+      sizeGB: 1
