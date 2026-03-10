@@ -8,22 +8,22 @@ from .base_provider import BaseProvider, MockProvider
 
 class DiscoveryProvider(BaseProvider):
     """Interface for business discovery providers"""
-    
+
     @abstractmethod
     async def search_businesses(
-        self, 
-        niche: str, 
-        location: str, 
+        self,
+        niche: str,
+        location: str,
         count: int = 10,
         **kwargs
     ) -> List[Dict[str, Any]]:
         """Search for businesses in a specific niche and location"""
         pass
-    
+
     @abstractmethod
     async def search_competitors(
-        self, 
-        business_name: str, 
+        self,
+        business_name: str,
         location: str,
         **kwargs
     ) -> List[Dict[str, Any]]:
@@ -33,18 +33,18 @@ class DiscoveryProvider(BaseProvider):
 
 class GoogleMapsProvider(DiscoveryProvider):
     """Google Maps API provider for business discovery"""
-    
+
     async def search_businesses(
-        self, 
-        niche: str, 
-        location: str, 
+        self,
+        niche: str,
+        location: str,
         count: int = 10,
         **kwargs
     ) -> List[Dict[str, Any]]:
         """Search for businesses using Google Maps API"""
         if not self.api_key:
             raise ValueError("Google Maps API key required")
-        
+
         url = "https://places.googleapis.com/v1/places:searchText"
         params = {
             "input": f"{niche} in {location}",
@@ -54,9 +54,9 @@ class GoogleMapsProvider(DiscoveryProvider):
                 "nationalPhoneNumber,websiteUri"
             )
         }
-        
+
         response = await self._make_request("POST", url, json=params)
-        
+
         results = []
         for place in response.get("places", [])[:count]:
             result = {
@@ -71,19 +71,19 @@ class GoogleMapsProvider(DiscoveryProvider):
                 "source": "google_maps"
             }
             results.append(result)
-        
+
         return results
-    
+
     async def search_competitors(
-        self, 
-        business_name: str, 
+        self,
+        business_name: str,
         location: str,
         **kwargs
     ) -> List[Dict[str, Any]]:
         """Search for competitors using Google Maps API"""
         if not self.api_key:
             raise ValueError("Google Maps API key required")
-        
+
         url = "https://places.googleapis.com/v1/places:searchText"
         params = {
             "input": f"competitors of {business_name} in {location}",
@@ -93,9 +93,9 @@ class GoogleMapsProvider(DiscoveryProvider):
                 "nationalPhoneNumber,websiteUri"
             )
         }
-        
+
         response = await self._make_request("POST", url, json=params)
-        
+
         results = []
         for place in response.get("places", []):
             result = {
@@ -110,33 +110,33 @@ class GoogleMapsProvider(DiscoveryProvider):
                 "source": "google_maps"
             }
             results.append(result)
-        
+
         return results
 
 
 class YelpProvider(DiscoveryProvider):
     """Yelp API provider for business discovery"""
-    
+
     async def search_businesses(
-        self, 
-        niche: str, 
-        location: str, 
+        self,
+        niche: str,
+        location: str,
         count: int = 10,
         **kwargs
     ) -> List[Dict[str, Any]]:
         """Search for businesses using Yelp API"""
         if not self.api_key:
             raise ValueError("Yelp API key required")
-        
+
         url = "https://api.yelp.com/v3/businesses/search"
         params = {
             "term": niche,
             "location": location,
             "limit": count
         }
-        
+
         response = await self._make_request("GET", url, params=params)
-        
+
         results = []
         for business in response.get("businesses", []):
             result = {
@@ -155,12 +155,12 @@ class YelpProvider(DiscoveryProvider):
                 "source": "yelp"
             }
             results.append(result)
-        
+
         return results
-    
+
     async def search_competitors(
-        self, 
-        business_name: str, 
+        self,
+        business_name: str,
         location: str,
         **kwargs
     ) -> List[Dict[str, Any]]:
@@ -170,11 +170,11 @@ class YelpProvider(DiscoveryProvider):
 
 class YellowPagesProvider(DiscoveryProvider):
     """Yellow Pages provider for business discovery"""
-    
+
     async def search_businesses(
-        self, 
-        niche: str, 
-        location: str, 
+        self,
+        niche: str,
+        location: str,
         count: int = 10,
         **kwargs
     ) -> List[Dict[str, Any]]:
@@ -183,10 +183,10 @@ class YellowPagesProvider(DiscoveryProvider):
         # For now, return mock data
         query = f"{niche} in {location}"
         return await MockProvider().search(query, count=count)
-    
+
     async def search_competitors(
-        self, 
-        business_name: str, 
+        self,
+        business_name: str,
         location: str,
         **kwargs
     ) -> List[Dict[str, Any]]:
@@ -196,11 +196,11 @@ class YellowPagesProvider(DiscoveryProvider):
 
 class IndustryDirectoryProvider(DiscoveryProvider):
     """Industry directory provider for business discovery"""
-    
+
     async def search_businesses(
-        self, 
-        niche: str, 
-        location: str, 
+        self,
+        niche: str,
+        location: str,
         count: int = 10,
         **kwargs
     ) -> List[Dict[str, Any]]:
@@ -209,10 +209,10 @@ class IndustryDirectoryProvider(DiscoveryProvider):
         # For now, return mock data
         query = f"{niche} in {location}"
         return await MockProvider().search(query, count=count)
-    
+
     async def search_competitors(
-        self, 
-        business_name: str, 
+        self,
+        business_name: str,
         location: str,
         **kwargs
     ) -> List[Dict[str, Any]]:

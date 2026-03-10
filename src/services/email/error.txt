@@ -1,0 +1,60 @@
+2026-03-03T22:45:33.602578917Z ==> Cloning from https://github.com/sm-agency-hunt/smhunt
+2026-03-03T22:45:34.314909264Z ==> Checking out commit 62d654f60351c1d8ce066baacbd51d233e14b68b in branch master
+2026-03-03T22:45:35.681236474Z ==> Installing dependencies with npm...
+2026-03-03T22:45:35.898334309Z ==> Using Node.js version 22.22.0 (default)
+2026-03-03T22:45:35.944462422Z ==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+2026-03-03T22:47:07.97935845Z 
+2026-03-03T22:47:07.979414461Z added 1581 packages, and audited 1582 packages in 1m
+2026-03-03T22:47:07.979486361Z 
+2026-03-03T22:47:07.979565392Z 281 packages are looking for funding
+2026-03-03T22:47:07.979589093Z   run `npm fund` for details
+2026-03-03T22:47:07.9985589Z 
+2026-03-03T22:47:07.99858797Z 17 vulnerabilities (3 moderate, 14 high)
+2026-03-03T22:47:07.9985939Z 
+2026-03-03T22:47:07.998605331Z To address issues that do not require attention, run:
+2026-03-03T22:47:07.998611501Z   npm audit fix
+2026-03-03T22:47:07.998616371Z 
+2026-03-03T22:47:07.998621641Z To address all issues (including breaking changes), run:
+2026-03-03T22:47:07.998627761Z   npm audit fix --force
+2026-03-03T22:47:07.998633021Z 
+2026-03-03T22:47:07.998639321Z Run `npm audit` for details.
+2026-03-03T22:47:13.602368324Z 
+2026-03-03T22:47:13.602402074Z changed 1 package, and audited 1582 packages in 5s
+2026-03-03T22:47:13.602415654Z 
+2026-03-03T22:47:13.602432114Z 281 packages are looking for funding
+2026-03-03T22:47:13.602570706Z   run `npm fund` for details
+2026-03-03T22:47:13.621784516Z 
+2026-03-03T22:47:13.621814006Z 17 vulnerabilities (3 moderate, 14 high)
+2026-03-03T22:47:13.621819626Z 
+2026-03-03T22:47:13.621825366Z To address issues that do not require attention, run:
+2026-03-03T22:47:13.621830587Z   npm audit fix
+2026-03-03T22:47:13.621835297Z 
+2026-03-03T22:47:13.621840157Z To address all issues (including breaking changes), run:
+2026-03-03T22:47:13.621846227Z   npm audit fix --force
+2026-03-03T22:47:13.621850917Z 
+2026-03-03T22:47:13.621856327Z Run `npm audit` for details.
+2026-03-03T22:47:13.806622523Z ==> Running build command 'npm install && npm run build'...
+2026-03-03T22:47:17.722408841Z 
+2026-03-03T22:47:17.722438101Z up to date, audited 1582 packages in 4s
+2026-03-03T22:47:17.722471262Z 
+2026-03-03T22:47:17.722480172Z 281 packages are looking for funding
+2026-03-03T22:47:17.722486802Z   run `npm fund` for details
+2026-03-03T22:47:17.740609181Z 
+2026-03-03T22:47:17.740640531Z 17 vulnerabilities (3 moderate, 14 high)
+2026-03-03T22:47:17.740645811Z 
+2026-03-03T22:47:17.740651471Z To address issues that do not require attention, run:
+2026-03-03T22:47:17.740656681Z   npm audit fix
+2026-03-03T22:47:17.740661551Z 
+2026-03-03T22:47:17.740666731Z To address all issues (including breaking changes), run:
+2026-03-03T22:47:17.740696702Z   npm audit fix --force
+2026-03-03T22:47:17.740699962Z 
+2026-03-03T22:47:17.740703392Z Run `npm audit` for details.
+2026-03-03T22:47:18.012093772Z 
+2026-03-03T22:47:18.012129143Z > smhunt-frontend@1.0.0 build
+2026-03-03T22:47:18.012137483Z > react-scripts build
+2026-03-03T22:47:18.012143393Z 
+2026-03-03T22:47:19.658702969Z Could not find a required file.
+2026-03-03T22:47:19.659127523Z   Name: index.html
+2026-03-03T22:47:19.659141394Z   Searched in: /opt/render/project/src/frontend/public
+2026-03-03T22:47:19.765444863Z ==> Build failed 😞
+2026-03-03T22:47:19.765480043Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys

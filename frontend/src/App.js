@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { 
   AppBar, Toolbar, Typography, Container, Grid, Paper, 
   Box, CircularProgress, Chip, Card, CardContent, CardHeader
@@ -12,6 +13,9 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
   PieChart, Pie, Cell
 } from 'recharts';
+import Navbar from './components/Navbar';
+import LeadSearch from './pages/LeadSearch';
+import AIAgent from './pages/AIAgent';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
@@ -63,17 +67,25 @@ function App() {
   }, []);
 
   const StatCard = ({ title, value, icon, color }) => (
-    <Card>
+    <Card sx={{ 
+      height: '100%',
+      background: `linear-gradient(135deg, ${color}20 0%, ${color}10 100%)`,
+      transition: 'transform 0.3s, box-shadow 0.3s',
+      '&:hover': {
+        transform: 'translateY(-5px)',
+        boxShadow: 6
+      }
+    }}>
       <CardContent>
         <Box display="flex" alignItems="center">
           <Box mr={2} color={color}>
             {icon}
           </Box>
           <Box>
-            <Typography variant="h6" component="div">
+            <Typography variant="h4" component="div" sx={{ fontWeight: 'bold' }}>
               {value}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
               {title}
             </Typography>
           </Box>
@@ -82,27 +94,17 @@ function App() {
     </Card>
   );
 
-  if (loading) {
+  const DashboardHome = () => {
+    if (loading) {
+      return (
+        <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+          <CircularProgress />
+        </Box>
+      );
+    }
+
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-        <CircularProgress />
-      </Box>
-    );
-  }
-
-  return (
-    <div className="App">
-      <AppBar position="static">
-        <Toolbar>
-          <Business sx={{ mr: 2 }} />
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            SMHUNT Admin Dashboard
-          </Typography>
-          <Chip label="Production" size="small" color="success" />
-        </Toolbar>
-      </AppBar>
-
-      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 12, pb: 4 }}>
         <Grid container spacing={3}>
           {/* Stats Cards */}
           <Grid item xs={12} sm={6} md={3}>
@@ -140,9 +142,15 @@ function App() {
 
           {/* Industry Distribution */}
           <Grid item xs={12} md={6}>
-            <Paper sx={{ p: 2, height: 300 }}>
-              <Typography variant="h6" gutterBottom>
-                Businesses by Industry
+            <Paper sx={{ 
+              p: 3, 
+              height: 320,
+              borderRadius: 2,
+              boxShadow: 3,
+              background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)'
+            }}>
+              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#1976d2' }}>
+                📊 Businesses by Industry
               </Typography>
               <ResponsiveContainer width="100%" height="85%">
                 <PieChart>
@@ -168,9 +176,15 @@ function App() {
 
           {/* Outreach Status */}
           <Grid item xs={12} md={6}>
-            <Paper sx={{ p: 2, height: 300 }}>
-              <Typography variant="h6" gutterBottom>
-                Outreach Status
+            <Paper sx={{ 
+              p: 3, 
+              height: 320,
+              borderRadius: 2,
+              boxShadow: 3,
+              background: 'linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%)'
+            }}>
+              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#f57c00' }}>
+                📧 Outreach Status
               </Typography>
               <ResponsiveContainer width="100%" height="85%">
                 <BarChart
@@ -195,9 +209,14 @@ function App() {
 
           {/* Weekly Activity */}
           <Grid item xs={12}>
-            <Paper sx={{ p: 2 }}>
-              <Typography variant="h6" gutterBottom>
-                Weekly Activity
+            <Paper sx={{ 
+              p: 3, 
+              borderRadius: 2,
+              boxShadow: 3,
+              background: 'linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)'
+            }}>
+              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#7b1fa2' }}>
+                📈 Weekly Activity
               </Typography>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart
@@ -222,7 +241,39 @@ function App() {
           </Grid>
         </Grid>
       </Container>
-    </div>
+    );
+  };
+
+  return (
+    <Router>
+      <Box sx={{ 
+        display: 'flex',
+        height: '100vh',
+        overflow: 'hidden'
+      }}>
+        <Navbar />
+        <Box 
+          component="main" 
+          sx={{ 
+            flexGrow: 1, 
+            ml: { xs: 0, md: '240px' },
+            minHeight: '100vh',
+            mt: { xs: '56px', sm: '64px' },
+            p: { xs: 2, sm: 3 },
+            pb: { xs: 4, sm: 6 }, // Extra bottom padding for scrollbar visibility
+            overflowY: 'auto', // Add scrollbar
+            overflowX: 'hidden' // Hide horizontal scroll
+          }}
+        >
+          <Routes>
+            <Route path="/" element={<DashboardHome />} />
+            <Route path="/leads/search" element={<LeadSearch />} />
+            <Route path="/ai-agent" element={<AIAgent />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Box>
+      </Box>
+    </Router>
   );
 }
 

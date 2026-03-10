@@ -1,0 +1,50 @@
+2026-03-03T23:21:46.037381763Z     bind._run_ddl_visitor(
+2026-03-03T23:21:46.037383872Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3243, in _run_ddl_visitor
+2026-03-03T23:21:46.037385953Z     conn._run_ddl_visitor(visitorcallable, element, **kwargs)
+2026-03-03T23:21:46.037388043Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2447, in _run_ddl_visitor
+2026-03-03T23:21:46.037390143Z     visitorcallable(self.dialect, self, **kwargs).traverse_single(element)
+2026-03-03T23:21:46.037392213Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/visitors.py", line 671, in traverse_single
+2026-03-03T23:21:46.037403654Z     return meth(obj, **kw)
+2026-03-03T23:21:46.037405894Z            ^^^^^^^^^^^^^^^
+2026-03-03T23:21:46.037407984Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py", line 919, in visit_metadata
+2026-03-03T23:21:46.037410014Z     self.traverse_single(
+2026-03-03T23:21:46.037412105Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/visitors.py", line 671, in traverse_single
+2026-03-03T23:21:46.037414155Z     return meth(obj, **kw)
+2026-03-03T23:21:46.037416205Z            ^^^^^^^^^^^^^^^
+2026-03-03T23:21:46.037418295Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py", line 961, in visit_table
+2026-03-03T23:21:46.037420435Z     self.traverse_single(index, create_ok=True)
+2026-03-03T23:21:46.037422565Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/visitors.py", line 671, in traverse_single
+2026-03-03T23:21:46.037424606Z     return meth(obj, **kw)
+2026-03-03T23:21:46.037426686Z            ^^^^^^^^^^^^^^^
+2026-03-03T23:21:46.037428776Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py", line 998, in visit_index
+2026-03-03T23:21:46.037430846Z     CreateIndex(index)._invoke_with(self.connection)
+2026-03-03T23:21:46.037432916Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py", line 315, in _invoke_with
+2026-03-03T23:21:46.037435686Z     return bind.execute(self)
+2026-03-03T23:21:46.037439267Z            ^^^^^^^^^^^^^^^^^^
+2026-03-03T23:21:46.037442887Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+2026-03-03T23:21:46.037446197Z     return meth(
+2026-03-03T23:21:46.037449227Z            ^^^^^
+2026-03-03T23:21:46.037452068Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py", line 181, in _execute_on_connection
+2026-03-03T23:21:46.037455128Z     return connection._execute_ddl(
+2026-03-03T23:21:46.037458418Z            ^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-03T23:21:46.037461808Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1528, in _execute_ddl
+2026-03-03T23:21:46.037465109Z     ret = self._execute_context(
+2026-03-03T23:21:46.037468129Z           ^^^^^^^^^^^^^^^^^^^^^^
+2026-03-03T23:21:46.037471409Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+2026-03-03T23:21:46.037474879Z     return self._exec_single_context(
+2026-03-03T23:21:46.037478379Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-03T23:21:46.03748169Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+2026-03-03T23:21:46.03748533Z     self._handle_dbapi_exception(
+2026-03-03T23:21:46.03748885Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2343, in _handle_dbapi_exception
+2026-03-03T23:21:46.037505331Z     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+2026-03-03T23:21:46.037509041Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+2026-03-03T23:21:46.037512692Z     self.dialect.do_execute(
+2026-03-03T23:21:46.037516422Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
+2026-03-03T23:21:46.037519632Z     cursor.execute(statement, parameters)
+2026-03-03T23:21:46.037522753Z sqlalchemy.exc.ProgrammingError: (psycopg2.errors.DuplicateTable) relation "ix_users_email" already exists
+2026-03-03T23:21:46.037533933Z 
+2026-03-03T23:21:46.037538034Z [SQL: CREATE UNIQUE INDEX ix_users_email ON users (email)]
+2026-03-03T23:21:46.037541384Z (Background on this error at: https://sqlalche.me/e/20/f405)
+2026-03-03T23:21:46.037544354Z 
+2026-03-03T23:21:46.037548044Z 2026-03-03 23:21:46 | ERROR    | logging:callHandlers:1706 - Application startup failed. Exiting.
+2026-03-03T23:21:46.037604039Z 2026-03-03 23:21:46 | ERROR    | logging:callHandlers:1706 - Application startup failed. Exiting.

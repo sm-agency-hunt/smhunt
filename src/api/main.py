@@ -7,7 +7,8 @@ from src.core.logger import log
 from src.database.connection import init_database, create_admin_user
 from src.api.v1.routers import (
     auth, leads, outreach, analytics, business, discovery,
-    enrichment, ai, email, scheduling, crm, website_intelligence, tasks
+    enrichment, ai, email, scheduling, crm, website_intelligence, tasks,
+    ai_agent
 )
 
 # Create FastAPI app
@@ -47,6 +48,7 @@ app.include_router(
     tags=["Website Intelligence"]
 )
 app.include_router(tasks.router, prefix="/api/v1", tags=["Tasks"])
+app.include_router(ai_agent.router, prefix="/api/v1", tags=["AI Agent"])
 
 
 @app.on_event("startup")
