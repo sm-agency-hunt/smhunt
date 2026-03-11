@@ -19,7 +19,7 @@ class EmailProvider(BaseProvider):
         **kwargs
     ) -> Dict[str, Any]:
         """Send an email"""
-     pass
+        pass
     
     @abstractmethod
     async def track_delivery(
@@ -28,7 +28,7 @@ class EmailProvider(BaseProvider):
         **kwargs
     ) -> Dict[str, Any]:
         """Track email delivery status"""
-     pass
+        pass
     
     @abstractmethod
     async def handle_bounce(
@@ -37,7 +37,7 @@ class EmailProvider(BaseProvider):
         **kwargs
     ) -> bool:
         """Handle bounced emails"""
-     pass
+        pass
 
 
 class ResendProvider(EmailProvider):
@@ -56,7 +56,7 @@ class ResendProvider(EmailProvider):
         
         import aiohttp
         url = "https://api.resend.com/emails"
-     payload = {
+        payload = {
             "from": kwargs.get("sender", "hello@yourdomain.com"),
             "to": [recipient],
             "subject": subject,
@@ -110,16 +110,16 @@ class SnovioProvider(EmailProvider):
         
         import aiohttp
         url = "https://api.snov.io/v1/find-email"
-     params = {
+        params = {
             "client_id": self.user_id,
             "client_secret": self.api_key,
             "domain": domain
         }
         
         if first_name:
-           params["first_name"] = first_name
+            params["first_name"] = first_name
         if last_name:
-           params["last_name"] = last_name
+            params["last_name"] = last_name
         
         async with aiohttp.ClientSession() as session:
             async with session.get(url, params=params) as response:
@@ -161,7 +161,7 @@ class SendGridProvider(EmailProvider):
         
         import aiohttp
         url = "https://api.sendgrid.com/v3/mail/send"
-     payload = {
+        payload = {
             "personalizations": [{"to": [{"email": recipient}], "subject": subject}],
             "from": {"email": kwargs.get("sender", "noreply@example.com")},
             "content": [{"type": kwargs.get("content_type", "text/html"), "value": body}]
@@ -206,7 +206,7 @@ class MailgunProvider(EmailProvider):
         import aiohttp
         domain = kwargs.get('domain', 'your-domain.com')
         url = f"https://api.mailgun.net/v3/{domain}/messages"
-      data = {
+        data = {
             "from": kwargs.get("sender", "noreply@example.com"),
             "to": recipient,
             "subject": subject,
