@@ -1,7 +1,6 @@
 """
 Email provider interfaces for sending and tracking emails - Snov.io & Resend Integration
 """
-import os
 from abc import abstractmethod
 from typing import Dict, Any
 from .base_provider import BaseProvider, MockProvider
