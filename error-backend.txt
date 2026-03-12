@@ -1,50 +1,441 @@
-2026-03-03T23:21:46.037381763Z     bind._run_ddl_visitor(
-2026-03-03T23:21:46.037383872Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3243, in _run_ddl_visitor
-2026-03-03T23:21:46.037385953Z     conn._run_ddl_visitor(visitorcallable, element, **kwargs)
-2026-03-03T23:21:46.037388043Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2447, in _run_ddl_visitor
-2026-03-03T23:21:46.037390143Z     visitorcallable(self.dialect, self, **kwargs).traverse_single(element)
-2026-03-03T23:21:46.037392213Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/visitors.py", line 671, in traverse_single
-2026-03-03T23:21:46.037403654Z     return meth(obj, **kw)
-2026-03-03T23:21:46.037405894Z            ^^^^^^^^^^^^^^^
-2026-03-03T23:21:46.037407984Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py", line 919, in visit_metadata
-2026-03-03T23:21:46.037410014Z     self.traverse_single(
-2026-03-03T23:21:46.037412105Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/visitors.py", line 671, in traverse_single
-2026-03-03T23:21:46.037414155Z     return meth(obj, **kw)
-2026-03-03T23:21:46.037416205Z            ^^^^^^^^^^^^^^^
-2026-03-03T23:21:46.037418295Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py", line 961, in visit_table
-2026-03-03T23:21:46.037420435Z     self.traverse_single(index, create_ok=True)
-2026-03-03T23:21:46.037422565Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/visitors.py", line 671, in traverse_single
-2026-03-03T23:21:46.037424606Z     return meth(obj, **kw)
-2026-03-03T23:21:46.037426686Z            ^^^^^^^^^^^^^^^
-2026-03-03T23:21:46.037428776Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py", line 998, in visit_index
-2026-03-03T23:21:46.037430846Z     CreateIndex(index)._invoke_with(self.connection)
-2026-03-03T23:21:46.037432916Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py", line 315, in _invoke_with
-2026-03-03T23:21:46.037435686Z     return bind.execute(self)
-2026-03-03T23:21:46.037439267Z            ^^^^^^^^^^^^^^^^^^
-2026-03-03T23:21:46.037442887Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
-2026-03-03T23:21:46.037446197Z     return meth(
-2026-03-03T23:21:46.037449227Z            ^^^^^
-2026-03-03T23:21:46.037452068Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/sql/ddl.py", line 181, in _execute_on_connection
-2026-03-03T23:21:46.037455128Z     return connection._execute_ddl(
-2026-03-03T23:21:46.037458418Z            ^^^^^^^^^^^^^^^^^^^^^^^^
-2026-03-03T23:21:46.037461808Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1528, in _execute_ddl
-2026-03-03T23:21:46.037465109Z     ret = self._execute_context(
-2026-03-03T23:21:46.037468129Z           ^^^^^^^^^^^^^^^^^^^^^^
-2026-03-03T23:21:46.037471409Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
-2026-03-03T23:21:46.037474879Z     return self._exec_single_context(
-2026-03-03T23:21:46.037478379Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-03-03T23:21:46.03748169Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
-2026-03-03T23:21:46.03748533Z     self._handle_dbapi_exception(
-2026-03-03T23:21:46.03748885Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2343, in _handle_dbapi_exception
-2026-03-03T23:21:46.037505331Z     raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-2026-03-03T23:21:46.037509041Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
-2026-03-03T23:21:46.037512692Z     self.dialect.do_execute(
-2026-03-03T23:21:46.037516422Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 922, in do_execute
-2026-03-03T23:21:46.037519632Z     cursor.execute(statement, parameters)
-2026-03-03T23:21:46.037522753Z sqlalchemy.exc.ProgrammingError: (psycopg2.errors.DuplicateTable) relation "ix_users_email" already exists
-2026-03-03T23:21:46.037533933Z 
-2026-03-03T23:21:46.037538034Z [SQL: CREATE UNIQUE INDEX ix_users_email ON users (email)]
-2026-03-03T23:21:46.037541384Z (Background on this error at: https://sqlalche.me/e/20/f405)
-2026-03-03T23:21:46.037544354Z 
-2026-03-03T23:21:46.037548044Z 2026-03-03 23:21:46 | ERROR    | logging:callHandlers:1706 - Application startup failed. Exiting.
-2026-03-03T23:21:46.037604039Z 2026-03-03 23:21:46 | ERROR    | logging:callHandlers:1706 - Application startup failed. Exiting.
+2026-03-11T23:24:47.974810006Z ==> Downloading cache...
+2026-03-11T23:24:48.014995515Z ==> Cloning from https://github.com/sm-agency-hunt/smhunt
+2026-03-11T23:24:48.57598382Z ==> Checking out commit da3af26613b584148c69e09d8a25abe53faa5a1a in branch master
+2026-03-11T23:24:57.572451945Z ==> Downloaded 314MB in 5s. Extraction took 5s.
+2026-03-11T23:25:05.714218877Z ==> Installing Python version 3.11.9...
+2026-03-11T23:25:14.264871445Z ==> Using Python version 3.11.9 via environment variable PYTHON_VERSION
+2026-03-11T23:25:14.28945392Z ==> Docs on specifying a Python version: https://render.com/docs/python-version
+2026-03-11T23:25:19.690179571Z ==> Using Poetry version 2.1.3 (default)
+2026-03-11T23:25:19.75694057Z ==> Docs on specifying a Poetry version: https://render.com/docs/poetry-version
+2026-03-11T23:25:19.845866024Z ==> Running build command 'pip install -r requirements.txt'...
+2026-03-11T23:25:20.567592064Z Collecting fastapi==0.104.1 (from -r requirements.txt (line 2))
+2026-03-11T23:25:20.56967951Z   Using cached fastapi-0.104.1-py3-none-any.whl.metadata (24 kB)
+2026-03-11T23:25:20.634836179Z Collecting uvicorn==0.24.0 (from uvicorn[standard]==0.24.0->-r requirements.txt (line 3))
+2026-03-11T23:25:20.636762823Z   Using cached uvicorn-0.24.0-py3-none-any.whl.metadata (6.4 kB)
+2026-03-11T23:25:20.681882673Z Collecting python-multipart==0.0.6 (from -r requirements.txt (line 4))
+2026-03-11T23:25:20.683814347Z   Using cached python_multipart-0.0.6-py3-none-any.whl.metadata (2.5 kB)
+2026-03-11T23:25:20.7283633Z Collecting mangum==0.17.0 (from -r requirements.txt (line 5))
+2026-03-11T23:25:20.730238104Z   Using cached mangum-0.17.0-py3-none-any.whl.metadata (3.3 kB)
+2026-03-11T23:25:21.101617434Z Collecting sqlalchemy==2.0.23 (from -r requirements.txt (line 8))
+2026-03-11T23:25:21.103471717Z   Using cached SQLAlchemy-2.0.23-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.6 kB)
+2026-03-11T23:25:21.30103956Z Collecting psycopg2-binary==2.9.9 (from -r requirements.txt (line 9))
+2026-03-11T23:25:21.302834832Z   Using cached psycopg2_binary-2.9.9-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.4 kB)
+2026-03-11T23:25:21.385392237Z Collecting alembic==1.12.1 (from -r requirements.txt (line 10))
+2026-03-11T23:25:21.387053148Z   Using cached alembic-1.12.1-py3-none-any.whl.metadata (7.3 kB)
+2026-03-11T23:25:21.503500294Z Collecting celery==5.3.4 (from -r requirements.txt (line 13))
+2026-03-11T23:25:21.505318106Z   Using cached celery-5.3.4-py3-none-any.whl.metadata (21 kB)
+2026-03-11T23:25:21.582667727Z Collecting redis==5.0.1 (from -r requirements.txt (line 14))
+2026-03-11T23:25:21.584840204Z   Using cached redis-5.0.1-py3-none-any.whl.metadata (8.9 kB)
+2026-03-11T23:25:21.737980495Z Collecting openai==1.3.5 (from -r requirements.txt (line 17))
+2026-03-11T23:25:21.739715616Z   Using cached openai-1.3.5-py3-none-any.whl.metadata (16 kB)
+2026-03-11T23:25:21.858920776Z Collecting anthropic==0.84.0 (from -r requirements.txt (line 18))
+2026-03-11T23:25:21.860688449Z   Using cached anthropic-0.84.0-py3-none-any.whl.metadata (3.0 kB)
+2026-03-11T23:25:22.097214705Z Collecting requests==2.31.0 (from -r requirements.txt (line 21))
+2026-03-11T23:25:22.099017567Z   Using cached requests-2.31.0-py3-none-any.whl.metadata (4.6 kB)
+2026-03-11T23:25:22.227748766Z Collecting beautifulsoup4==4.12.2 (from -r requirements.txt (line 22))
+2026-03-11T23:25:22.229569648Z   Using cached beautifulsoup4-4.12.2-py3-none-any.whl.metadata (3.6 kB)
+2026-03-11T23:25:22.441763322Z Collecting selenium==4.15.2 (from -r requirements.txt (line 23))
+2026-03-11T23:25:22.443516484Z   Using cached selenium-4.15.2-py3-none-any.whl.metadata (6.9 kB)
+2026-03-11T23:25:22.759084502Z Collecting playwright==1.40.0 (from -r requirements.txt (line 24))
+2026-03-11T23:25:22.760889354Z   Using cached playwright-1.40.0-py3-none-manylinux1_x86_64.whl.metadata (3.6 kB)
+2026-03-11T23:25:23.52009598Z Collecting aiohttp==3.9.0 (from -r requirements.txt (line 25))
+2026-03-11T23:25:23.531967198Z   Using cached aiohttp-3.9.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.4 kB)
+2026-03-11T23:25:23.780570924Z Collecting sendgrid==6.10.0 (from -r requirements.txt (line 28))
+2026-03-11T23:25:23.782305945Z   Using cached sendgrid-6.10.0-py3-none-any.whl.metadata (12 kB)
+2026-03-11T23:25:24.141945Z Collecting mailgun==0.1.1 (from -r requirements.txt (line 29))
+2026-03-11T23:25:24.142123123Z   Using cached mailgun-0.1.1-py3-none-any.whl
+2026-03-11T23:25:24.682522683Z Collecting pandas<2.1.0,>=2.0.0 (from -r requirements.txt (line 32))
+2026-03-11T23:25:24.684806701Z   Using cached pandas-2.0.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (18 kB)
+2026-03-11T23:25:25.062294088Z Collecting numpy<1.26.0,>=1.24.0 (from -r requirements.txt (line 33))
+2026-03-11T23:25:25.06406227Z   Using cached numpy-1.25.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.6 kB)
+2026-03-11T23:25:25.176407245Z Collecting python-dotenv==1.0.0 (from -r requirements.txt (line 36))
+2026-03-11T23:25:25.1784665Z   Using cached python_dotenv-1.0.0-py3-none-any.whl.metadata (21 kB)
+2026-03-11T23:25:25.508594459Z Collecting pydantic==2.5.0 (from -r requirements.txt (line 37))
+2026-03-11T23:25:25.54814791Z   Using cached pydantic-2.5.0-py3-none-any.whl.metadata (174 kB)
+2026-03-11T23:25:25.735275743Z Collecting pydantic-settings==2.1.0 (from -r requirements.txt (line 38))
+2026-03-11T23:25:25.737044825Z   Using cached pydantic_settings-2.1.0-py3-none-any.whl.metadata (2.9 kB)
+2026-03-11T23:25:25.936801085Z Collecting python-jose==3.3.0 (from python-jose[cryptography]==3.3.0->-r requirements.txt (line 39))
+2026-03-11T23:25:25.938645698Z   Using cached python_jose-3.3.0-py2.py3-none-any.whl.metadata (5.4 kB)
+2026-03-11T23:25:26.092179324Z Collecting passlib==1.7.4 (from passlib[bcrypt]==1.7.4->-r requirements.txt (line 40))
+2026-03-11T23:25:26.093979226Z   Using cached passlib-1.7.4-py2.py3-none-any.whl.metadata (1.7 kB)
+2026-03-11T23:25:26.328801322Z Collecting pytest==7.4.3 (from -r requirements.txt (line 43))
+2026-03-11T23:25:26.330615444Z   Using cached pytest-7.4.3-py3-none-any.whl.metadata (7.9 kB)
+2026-03-11T23:25:26.510853132Z Collecting pytest-asyncio==0.21.1 (from -r requirements.txt (line 44))
+2026-03-11T23:25:26.512614544Z   Using cached pytest_asyncio-0.21.1-py3-none-any.whl.metadata (4.0 kB)
+2026-03-11T23:25:26.796366136Z Collecting httpx==0.25.2 (from -r requirements.txt (line 45))
+2026-03-11T23:25:26.817305227Z   Using cached httpx-0.25.2-py3-none-any.whl.metadata (6.9 kB)
+2026-03-11T23:25:26.974024582Z Collecting loguru==0.7.2 (from -r requirements.txt (line 48))
+2026-03-11T23:25:26.975728613Z   Using cached loguru-0.7.2-py3-none-any.whl.metadata (23 kB)
+2026-03-11T23:25:27.128083225Z Collecting sentry-sdk==1.39.1 (from -r requirements.txt (line 49))
+2026-03-11T23:25:27.129867717Z   Using cached sentry_sdk-1.39.1-py2.py3-none-any.whl.metadata (9.7 kB)
+2026-03-11T23:25:27.276202184Z Collecting googlemaps==4.10.0 (from -r requirements.txt (line 52))
+2026-03-11T23:25:27.276365546Z   Using cached googlemaps-4.10.0-py3-none-any.whl
+2026-03-11T23:25:27.381802005Z Collecting linkedin-api==2.0.0 (from -r requirements.txt (line 53))
+2026-03-11T23:25:27.383500766Z   Using cached linkedin_api-2.0.0-py3-none-any.whl.metadata (9.1 kB)
+2026-03-11T23:25:27.494343552Z Collecting anyio<4.0.0,>=3.7.1 (from fastapi==0.104.1->-r requirements.txt (line 2))
+2026-03-11T23:25:27.495939812Z   Using cached anyio-3.7.1-py3-none-any.whl.metadata (4.7 kB)
+2026-03-11T23:25:27.690840841Z Collecting starlette<0.28.0,>=0.27.0 (from fastapi==0.104.1->-r requirements.txt (line 2))
+2026-03-11T23:25:27.692521182Z   Using cached starlette-0.27.0-py3-none-any.whl.metadata (5.8 kB)
+2026-03-11T23:25:27.827159514Z Collecting typing-extensions>=4.8.0 (from fastapi==0.104.1->-r requirements.txt (line 2))
+2026-03-11T23:25:27.828853905Z   Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+2026-03-11T23:25:28.014986806Z Collecting click>=7.0 (from uvicorn==0.24.0->uvicorn[standard]==0.24.0->-r requirements.txt (line 3))
+2026-03-11T23:25:28.016672167Z   Using cached click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+2026-03-11T23:25:28.108009561Z Collecting h11>=0.8 (from uvicorn==0.24.0->uvicorn[standard]==0.24.0->-r requirements.txt (line 3))
+2026-03-11T23:25:28.109762042Z   Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2026-03-11T23:25:28.403197505Z Collecting greenlet!=0.4.17 (from sqlalchemy==2.0.23->-r requirements.txt (line 8))
+2026-03-11T23:25:28.404971987Z   Using cached greenlet-3.3.2-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.7 kB)
+2026-03-11T23:25:28.528609322Z Collecting Mako (from alembic==1.12.1->-r requirements.txt (line 10))
+2026-03-11T23:25:28.530193802Z   Using cached mako-1.3.10-py3-none-any.whl.metadata (2.9 kB)
+2026-03-11T23:25:28.792346307Z Collecting billiard<5.0,>=4.1.0 (from celery==5.3.4->-r requirements.txt (line 13))
+2026-03-11T23:25:28.794058378Z   Using cached billiard-4.2.4-py3-none-any.whl.metadata (4.8 kB)
+2026-03-11T23:25:28.957190233Z Collecting kombu<6.0,>=5.3.2 (from celery==5.3.4->-r requirements.txt (line 13))
+2026-03-11T23:25:28.958919635Z   Using cached kombu-5.6.2-py3-none-any.whl.metadata (3.5 kB)
+2026-03-11T23:25:29.135838811Z Collecting vine<6.0,>=5.0.0 (from celery==5.3.4->-r requirements.txt (line 13))
+2026-03-11T23:25:29.137583163Z   Using cached vine-5.1.0-py3-none-any.whl.metadata (2.7 kB)
+2026-03-11T23:25:29.22516815Z Collecting click-didyoumean>=0.3.0 (from celery==5.3.4->-r requirements.txt (line 13))
+2026-03-11T23:25:29.226908842Z   Using cached click_didyoumean-0.3.1-py3-none-any.whl.metadata (3.9 kB)
+2026-03-11T23:25:29.319186317Z Collecting click-repl>=0.2.0 (from celery==5.3.4->-r requirements.txt (line 13))
+2026-03-11T23:25:29.320883498Z   Using cached click_repl-0.3.0-py3-none-any.whl.metadata (3.6 kB)
+2026-03-11T23:25:29.499681948Z Collecting click-plugins>=1.1.1 (from celery==5.3.4->-r requirements.txt (line 13))
+2026-03-11T23:25:29.501640062Z   Using cached click_plugins-1.1.1.2-py2.py3-none-any.whl.metadata (6.5 kB)
+2026-03-11T23:25:29.677357334Z Collecting tzdata>=2022.7 (from celery==5.3.4->-r requirements.txt (line 13))
+2026-03-11T23:25:29.679126816Z   Using cached tzdata-2025.3-py2.py3-none-any.whl.metadata (1.4 kB)
+2026-03-11T23:25:29.761487548Z Collecting python-dateutil>=2.8.2 (from celery==5.3.4->-r requirements.txt (line 13))
+2026-03-11T23:25:29.763159519Z   Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2026-03-11T23:25:30.008455185Z Collecting distro<2,>=1.7.0 (from openai==1.3.5->-r requirements.txt (line 17))
+2026-03-11T23:25:30.010190387Z   Using cached distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+2026-03-11T23:25:30.24003898Z Collecting tqdm>4 (from openai==1.3.5->-r requirements.txt (line 17))
+2026-03-11T23:25:30.242196187Z   Using cached tqdm-4.67.3-py3-none-any.whl.metadata (57 kB)
+2026-03-11T23:25:30.455168421Z Collecting docstring-parser<1,>=0.15 (from anthropic==0.84.0->-r requirements.txt (line 18))
+2026-03-11T23:25:30.456869372Z   Using cached docstring_parser-0.17.0-py3-none-any.whl.metadata (3.5 kB)
+2026-03-11T23:25:30.772759094Z Collecting jiter<1,>=0.4.0 (from anthropic==0.84.0->-r requirements.txt (line 18))
+2026-03-11T23:25:30.774695118Z   Using cached jiter-0.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+2026-03-11T23:25:30.968698036Z Collecting sniffio (from anthropic==0.84.0->-r requirements.txt (line 18))
+2026-03-11T23:25:30.970517439Z   Using cached sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+2026-03-11T23:25:31.27022616Z Collecting charset-normalizer<4,>=2 (from requests==2.31.0->-r requirements.txt (line 21))
+2026-03-11T23:25:31.272151944Z   Using cached charset_normalizer-3.4.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (39 kB)
+2026-03-11T23:25:31.416579577Z Collecting idna<4,>=2.5 (from requests==2.31.0->-r requirements.txt (line 21))
+2026-03-11T23:25:31.418691553Z   Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+2026-03-11T23:25:31.59883314Z Collecting urllib3<3,>=1.21.1 (from requests==2.31.0->-r requirements.txt (line 21))
+2026-03-11T23:25:31.6028493Z   Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+2026-03-11T23:25:31.784173311Z Collecting certifi>=2017.4.17 (from requests==2.31.0->-r requirements.txt (line 21))
+2026-03-11T23:25:31.785982073Z   Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+2026-03-11T23:25:31.988102483Z Collecting soupsieve>1.2 (from beautifulsoup4==4.12.2->-r requirements.txt (line 22))
+2026-03-11T23:25:31.989934205Z   Using cached soupsieve-2.8.3-py3-none-any.whl.metadata (4.6 kB)
+2026-03-11T23:25:32.190522736Z Collecting trio~=0.17 (from selenium==4.15.2->-r requirements.txt (line 23))
+2026-03-11T23:25:32.192359528Z   Using cached trio-0.33.0-py3-none-any.whl.metadata (8.5 kB)
+2026-03-11T23:25:32.664752863Z Collecting trio-websocket~=0.9 (from selenium==4.15.2->-r requirements.txt (line 23))
+2026-03-11T23:25:32.666868909Z   Using cached trio_websocket-0.12.2-py3-none-any.whl.metadata (5.1 kB)
+2026-03-11T23:25:32.689005344Z Collecting greenlet!=0.4.17 (from sqlalchemy==2.0.23->-r requirements.txt (line 8))
+2026-03-11T23:25:32.690728256Z   Using cached greenlet-3.0.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.7 kB)
+2026-03-11T23:25:32.807630577Z Collecting pyee==11.0.1 (from playwright==1.40.0->-r requirements.txt (line 24))
+2026-03-11T23:25:32.809348478Z   Using cached pyee-11.0.1-py3-none-any.whl.metadata (2.7 kB)
+2026-03-11T23:25:33.18480321Z Collecting attrs>=17.3.0 (from aiohttp==3.9.0->-r requirements.txt (line 25))
+2026-03-11T23:25:33.18725794Z   Using cached attrs-25.4.0-py3-none-any.whl.metadata (10 kB)
+2026-03-11T23:25:33.678270046Z Collecting multidict<7.0,>=4.5 (from aiohttp==3.9.0->-r requirements.txt (line 25))
+2026-03-11T23:25:33.698139733Z   Using cached multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+2026-03-11T23:25:34.271675313Z Collecting yarl<2.0,>=1.0 (from aiohttp==3.9.0->-r requirements.txt (line 25))
+2026-03-11T23:25:34.271706404Z   Using cached yarl-1.23.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+2026-03-11T23:25:34.642851271Z Collecting frozenlist>=1.1.1 (from aiohttp==3.9.0->-r requirements.txt (line 25))
+2026-03-11T23:25:34.66611216Z   Using cached frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+2026-03-11T23:25:35.012126206Z Collecting aiosignal>=1.1.2 (from aiohttp==3.9.0->-r requirements.txt (line 25))
+2026-03-11T23:25:35.013835177Z   Using cached aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+2026-03-11T23:25:35.236143816Z Collecting python-http-client>=3.2.1 (from sendgrid==6.10.0->-r requirements.txt (line 28))
+2026-03-11T23:25:35.243125643Z   Using cached python_http_client-3.3.7-py3-none-any.whl.metadata (6.9 kB)
+2026-03-11T23:25:35.484104145Z Collecting starkbank-ecdsa>=2.0.1 (from sendgrid==6.10.0->-r requirements.txt (line 28))
+2026-03-11T23:25:35.484260297Z   Using cached starkbank_ecdsa-2.2.0-py3-none-any.whl
+2026-03-11T23:25:35.709562684Z Collecting pyactiveresource==1.0.1 (from mailgun==0.1.1->-r requirements.txt (line 29))
+2026-03-11T23:25:35.709696306Z   Using cached pyactiveresource-1.0.1-py3-none-any.whl
+2026-03-11T23:25:35.949582514Z Collecting annotated-types>=0.4.0 (from pydantic==2.5.0->-r requirements.txt (line 37))
+2026-03-11T23:25:35.951423387Z   Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+2026-03-11T23:25:37.063283971Z Collecting pydantic-core==2.14.1 (from pydantic==2.5.0->-r requirements.txt (line 37))
+2026-03-11T23:25:37.117050188Z   Using cached pydantic_core-2.14.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+2026-03-11T23:25:37.362813029Z Collecting ecdsa!=0.15 (from python-jose==3.3.0->python-jose[cryptography]==3.3.0->-r requirements.txt (line 39))
+2026-03-11T23:25:37.392885132Z   Using cached ecdsa-0.19.1-py2.py3-none-any.whl.metadata (29 kB)
+2026-03-11T23:25:37.697245991Z Collecting rsa (from python-jose==3.3.0->python-jose[cryptography]==3.3.0->-r requirements.txt (line 39))
+2026-03-11T23:25:37.699106124Z   Using cached rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+2026-03-11T23:25:37.856311026Z Collecting pyasn1 (from python-jose==3.3.0->python-jose[cryptography]==3.3.0->-r requirements.txt (line 39))
+2026-03-11T23:25:37.858324141Z   Using cached pyasn1-0.6.2-py3-none-any.whl.metadata (8.4 kB)
+2026-03-11T23:25:38.134571151Z Collecting iniconfig (from pytest==7.4.3->-r requirements.txt (line 43))
+2026-03-11T23:25:38.136553725Z   Using cached iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+2026-03-11T23:25:38.332508258Z Collecting packaging (from pytest==7.4.3->-r requirements.txt (line 43))
+2026-03-11T23:25:38.33429776Z   Using cached packaging-26.0-py3-none-any.whl.metadata (3.3 kB)
+2026-03-11T23:25:38.454720735Z Collecting pluggy<2.0,>=0.12 (from pytest==7.4.3->-r requirements.txt (line 43))
+2026-03-11T23:25:38.456663909Z   Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+2026-03-11T23:25:38.692291545Z Collecting httpcore==1.* (from httpx==0.25.2->-r requirements.txt (line 45))
+2026-03-11T23:25:38.757069789Z   Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+2026-03-11T23:25:39.161797104Z Collecting lxml (from linkedin-api==2.0.0->-r requirements.txt (line 53))
+2026-03-11T23:25:39.163610586Z   Using cached lxml-6.0.2-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.6 kB)
+2026-03-11T23:25:39.378221551Z Collecting bcrypt>=3.1.0 (from passlib[bcrypt]==1.7.4->-r requirements.txt (line 40))
+2026-03-11T23:25:39.455404999Z   Using cached bcrypt-5.0.0-cp39-abi3-manylinux_2_34_x86_64.whl.metadata (10 kB)
+2026-03-11T23:25:39.844049474Z Collecting cryptography>=3.4.0 (from python-jose[cryptography]==3.3.0->-r requirements.txt (line 39))
+2026-03-11T23:25:39.845908357Z   Using cached cryptography-46.0.5-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+2026-03-11T23:25:40.036923998Z Collecting httptools>=0.5.0 (from uvicorn[standard]==0.24.0->-r requirements.txt (line 3))
+2026-03-11T23:25:40.038708891Z   Using cached httptools-0.7.1-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+2026-03-11T23:25:40.279799664Z Collecting pyyaml>=5.1 (from uvicorn[standard]==0.24.0->-r requirements.txt (line 3))
+2026-03-11T23:25:40.281481955Z   Using cached pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2026-03-11T23:25:40.47927051Z Collecting uvloop!=0.15.0,!=0.15.1,>=0.14.0 (from uvicorn[standard]==0.24.0->-r requirements.txt (line 3))
+2026-03-11T23:25:40.519047404Z   Using cached uvloop-0.22.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (4.9 kB)
+2026-03-11T23:25:40.689391699Z Collecting watchfiles>=0.13 (from uvicorn[standard]==0.24.0->-r requirements.txt (line 3))
+2026-03-11T23:25:40.691144711Z   Using cached watchfiles-1.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+2026-03-11T23:25:40.839901538Z Collecting websockets>=10.4 (from uvicorn[standard]==0.24.0->-r requirements.txt (line 3))
+2026-03-11T23:25:40.841632849Z   Using cached websockets-16.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.8 kB)
+2026-03-11T23:25:41.142728347Z Collecting pytz>=2020.1 (from pandas<2.1.0,>=2.0.0->-r requirements.txt (line 32))
+2026-03-11T23:25:41.150153839Z   Using cached pytz-2026.1.post1-py2.py3-none-any.whl.metadata (22 kB)
+2026-03-11T23:25:41.430435239Z Collecting prompt-toolkit>=3.0.36 (from click-repl>=0.2.0->celery==5.3.4->-r requirements.txt (line 13))
+2026-03-11T23:25:41.437629788Z   Using cached prompt_toolkit-3.0.52-py3-none-any.whl.metadata (6.4 kB)
+2026-03-11T23:25:41.922144294Z Collecting cffi>=2.0.0 (from cryptography>=3.4.0->python-jose[cryptography]==3.3.0->-r requirements.txt (line 39))
+2026-03-11T23:25:41.924103458Z   Using cached cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+2026-03-11T23:25:42.114661834Z Collecting six>=1.9.0 (from ecdsa!=0.15->python-jose==3.3.0->python-jose[cryptography]==3.3.0->-r requirements.txt (line 39))
+2026-03-11T23:25:42.116743799Z   Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2026-03-11T23:25:42.245582479Z Collecting amqp<6.0.0,>=5.1.1 (from kombu<6.0,>=5.3.2->celery==5.3.4->-r requirements.txt (line 13))
+2026-03-11T23:25:42.247346481Z   Using cached amqp-5.3.1-py3-none-any.whl.metadata (8.9 kB)
+2026-03-11T23:25:42.628625525Z Collecting sortedcontainers (from trio~=0.17->selenium==4.15.2->-r requirements.txt (line 23))
+2026-03-11T23:25:42.630405917Z   Using cached sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
+2026-03-11T23:25:42.918007807Z Collecting outcome (from trio~=0.17->selenium==4.15.2->-r requirements.txt (line 23))
+2026-03-11T23:25:42.91988902Z   Using cached outcome-1.3.0.post0-py2.py3-none-any.whl.metadata (2.6 kB)
+2026-03-11T23:25:42.979826794Z Collecting wsproto>=0.14 (from trio-websocket~=0.9->selenium==4.15.2->-r requirements.txt (line 23))
+2026-03-11T23:25:42.981376193Z   Using cached wsproto-1.3.2-py3-none-any.whl.metadata (5.2 kB)
+2026-03-11T23:25:43.074616531Z Collecting pysocks!=1.5.7,<2.0,>=1.5.6 (from urllib3[socks]<3,>=1.26->selenium==4.15.2->-r requirements.txt (line 23))
+2026-03-11T23:25:43.076442524Z   Using cached PySocks-1.7.1-py3-none-any.whl.metadata (13 kB)
+2026-03-11T23:25:43.23885319Z Collecting propcache>=0.2.1 (from yarl<2.0,>=1.0->aiohttp==3.9.0->-r requirements.txt (line 25))
+2026-03-11T23:25:43.240711843Z   Using cached propcache-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+2026-03-11T23:25:43.370262662Z Collecting MarkupSafe>=0.9.2 (from Mako->alembic==1.12.1->-r requirements.txt (line 10))
+2026-03-11T23:25:43.372068904Z   Using cached markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+2026-03-11T23:25:43.526356659Z Collecting pycparser (from cffi>=2.0.0->cryptography>=3.4.0->python-jose[cryptography]==3.3.0->-r requirements.txt (line 39))
+2026-03-11T23:25:43.528108641Z   Using cached pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+2026-03-11T23:25:43.655912158Z Collecting wcwidth (from prompt-toolkit>=3.0.36->click-repl>=0.2.0->celery==5.3.4->-r requirements.txt (line 13))
+2026-03-11T23:25:43.657566688Z   Using cached wcwidth-0.6.0-py3-none-any.whl.metadata (30 kB)
+2026-03-11T23:25:43.769413937Z Using cached fastapi-0.104.1-py3-none-any.whl (92 kB)
+2026-03-11T23:25:43.771176959Z Using cached uvicorn-0.24.0-py3-none-any.whl (59 kB)
+2026-03-11T23:25:43.77284161Z Using cached python_multipart-0.0.6-py3-none-any.whl (45 kB)
+2026-03-11T23:25:43.77451578Z Using cached mangum-0.17.0-py3-none-any.whl (17 kB)
+2026-03-11T23:25:43.776171431Z Using cached SQLAlchemy-2.0.23-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.2 MB)
+2026-03-11T23:25:43.78336017Z Using cached psycopg2_binary-2.9.9-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+2026-03-11T23:25:43.790123334Z Using cached alembic-1.12.1-py3-none-any.whl (226 kB)
+2026-03-11T23:25:43.7921649Z Using cached celery-5.3.4-py3-none-any.whl (421 kB)
+2026-03-11T23:25:43.794523859Z Using cached redis-5.0.1-py3-none-any.whl (250 kB)
+2026-03-11T23:25:43.796586505Z Using cached openai-1.3.5-py3-none-any.whl (220 kB)
+2026-03-11T23:25:43.798599039Z Using cached anthropic-0.84.0-py3-none-any.whl (455 kB)
+2026-03-11T23:25:43.80102719Z Using cached requests-2.31.0-py3-none-any.whl (62 kB)
+2026-03-11T23:25:43.802820872Z Using cached beautifulsoup4-4.12.2-py3-none-any.whl (142 kB)
+2026-03-11T23:25:43.804663235Z Using cached selenium-4.15.2-py3-none-any.whl (10.2 MB)
+2026-03-11T23:25:43.823872533Z Using cached playwright-1.40.0-py3-none-manylinux1_x86_64.whl (37.2 MB)
+2026-03-11T23:25:43.890818704Z Using cached aiohttp-3.9.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.3 MB)
+2026-03-11T23:25:43.894915785Z Using cached sendgrid-6.10.0-py3-none-any.whl (101 kB)
+2026-03-11T23:25:43.8969033Z Using cached python_dotenv-1.0.0-py3-none-any.whl (19 kB)
+2026-03-11T23:25:43.898747163Z Using cached pydantic-2.5.0-py3-none-any.whl (407 kB)
+2026-03-11T23:25:43.901109842Z Using cached pydantic_settings-2.1.0-py3-none-any.whl (11 kB)
+2026-03-11T23:25:43.902878434Z Using cached python_jose-3.3.0-py2.py3-none-any.whl (33 kB)
+2026-03-11T23:25:43.904581665Z Using cached passlib-1.7.4-py2.py3-none-any.whl (525 kB)
+2026-03-11T23:25:43.907211998Z Using cached pytest-7.4.3-py3-none-any.whl (325 kB)
+2026-03-11T23:25:43.909425225Z Using cached pytest_asyncio-0.21.1-py3-none-any.whl (13 kB)
+2026-03-11T23:25:43.911129776Z Using cached httpx-0.25.2-py3-none-any.whl (74 kB)
+2026-03-11T23:25:43.912863268Z Using cached loguru-0.7.2-py3-none-any.whl (62 kB)
+2026-03-11T23:25:43.91464766Z Using cached sentry_sdk-1.39.1-py2.py3-none-any.whl (254 kB)
+2026-03-11T23:25:43.916851598Z Using cached linkedin_api-2.0.0-py3-none-any.whl (22 kB)
+2026-03-11T23:25:43.918502138Z Using cached greenlet-3.0.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (616 kB)
+2026-03-11T23:25:43.921287123Z Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+2026-03-11T23:25:43.923295138Z Using cached pydantic_core-2.14.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+2026-03-11T23:25:43.966903489Z Using cached pyee-11.0.1-py3-none-any.whl (15 kB)
+2026-03-11T23:25:43.968485509Z Using cached pandas-2.0.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
+2026-03-11T23:25:43.991603956Z Using cached numpy-1.25.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.2 MB)
+2026-03-11T23:25:44.029378215Z Using cached aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+2026-03-11T23:25:44.031985247Z Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+2026-03-11T23:25:44.034321726Z Using cached anyio-3.7.1-py3-none-any.whl (80 kB)
+2026-03-11T23:25:44.036089368Z Using cached attrs-25.4.0-py3-none-any.whl (67 kB)
+2026-03-11T23:25:44.03782105Z Using cached bcrypt-5.0.0-cp39-abi3-manylinux_2_34_x86_64.whl (278 kB)
+2026-03-11T23:25:44.039911696Z Using cached billiard-4.2.4-py3-none-any.whl (87 kB)
+2026-03-11T23:25:44.041661997Z Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+2026-03-11T23:25:44.043524151Z Using cached charset_normalizer-3.4.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (193 kB)
+2026-03-11T23:25:44.045450864Z Using cached click-8.3.1-py3-none-any.whl (108 kB)
+2026-03-11T23:25:44.047216737Z Using cached click_didyoumean-0.3.1-py3-none-any.whl (3.6 kB)
+2026-03-11T23:25:44.048777006Z Using cached click_plugins-1.1.1.2-py2.py3-none-any.whl (11 kB)
+2026-03-11T23:25:44.050326645Z Using cached click_repl-0.3.0-py3-none-any.whl (10 kB)
+2026-03-11T23:25:44.051897305Z Using cached cryptography-46.0.5-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+2026-03-11T23:25:44.06198433Z Using cached distro-1.9.0-py3-none-any.whl (20 kB)
+2026-03-11T23:25:44.064038455Z Using cached docstring_parser-0.17.0-py3-none-any.whl (36 kB)
+2026-03-11T23:25:44.065724507Z Using cached ecdsa-0.19.1-py2.py3-none-any.whl (150 kB)
+2026-03-11T23:25:44.067577879Z Using cached frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (231 kB)
+2026-03-11T23:25:44.069608645Z Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+2026-03-11T23:25:44.071228615Z Using cached httptools-0.7.1-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (456 kB)
+2026-03-11T23:25:44.073690906Z Using cached idna-3.11-py3-none-any.whl (71 kB)
+2026-03-11T23:25:44.075381736Z Using cached jiter-0.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (362 kB)
+2026-03-11T23:25:44.077640595Z Using cached kombu-5.6.2-py3-none-any.whl (214 kB)
+2026-03-11T23:25:44.079696Z Using cached vine-5.1.0-py3-none-any.whl (9.6 kB)
+2026-03-11T23:25:44.081260189Z Using cached multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (246 kB)
+2026-03-11T23:25:44.083338845Z Using cached pluggy-1.6.0-py3-none-any.whl (20 kB)
+2026-03-11T23:25:44.085122357Z Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2026-03-11T23:25:44.087117022Z Using cached python_http_client-3.3.7-py3-none-any.whl (8.4 kB)
+2026-03-11T23:25:44.088725692Z Using cached pytz-2026.1.post1-py2.py3-none-any.whl (510 kB)
+2026-03-11T23:25:44.091244013Z Using cached pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+2026-03-11T23:25:44.094229781Z Using cached sniffio-1.3.1-py3-none-any.whl (10 kB)
+2026-03-11T23:25:44.09581756Z Using cached soupsieve-2.8.3-py3-none-any.whl (37 kB)
+2026-03-11T23:25:44.09743379Z Using cached starlette-0.27.0-py3-none-any.whl (66 kB)
+2026-03-11T23:25:44.099170862Z Using cached tqdm-4.67.3-py3-none-any.whl (78 kB)
+2026-03-11T23:25:44.100941674Z Using cached trio-0.33.0-py3-none-any.whl (510 kB)
+2026-03-11T23:25:44.103422255Z Using cached trio_websocket-0.12.2-py3-none-any.whl (21 kB)
+2026-03-11T23:25:44.105118106Z Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+2026-03-11T23:25:44.107093461Z Using cached tzdata-2025.3-py2.py3-none-any.whl (348 kB)
+2026-03-11T23:25:44.109360478Z Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+2026-03-11T23:25:44.111210912Z Using cached uvloop-0.22.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.8 MB)
+2026-03-11T23:25:44.119594396Z Using cached watchfiles-1.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+2026-03-11T23:25:44.121976715Z Using cached websockets-16.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (184 kB)
+2026-03-11T23:25:44.12393816Z Using cached yarl-1.23.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (102 kB)
+2026-03-11T23:25:44.125779442Z Using cached iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+2026-03-11T23:25:44.127404663Z Using cached lxml-6.0.2-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.2 MB)
+2026-03-11T23:25:44.138734034Z Using cached mako-1.3.10-py3-none-any.whl (78 kB)
+2026-03-11T23:25:44.140650137Z Using cached packaging-26.0-py3-none-any.whl (74 kB)
+2026-03-11T23:25:44.14245709Z Using cached pyasn1-0.6.2-py3-none-any.whl (83 kB)
+2026-03-11T23:25:44.144258562Z Using cached rsa-4.9.1-py3-none-any.whl (34 kB)
+2026-03-11T23:25:44.145996444Z Using cached amqp-5.3.1-py3-none-any.whl (50 kB)
+2026-03-11T23:25:44.147785336Z Using cached cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (215 kB)
+2026-03-11T23:25:44.149844832Z Using cached markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+2026-03-11T23:25:44.151552503Z Using cached outcome-1.3.0.post0-py2.py3-none-any.whl (10 kB)
+2026-03-11T23:25:44.153241644Z Using cached prompt_toolkit-3.0.52-py3-none-any.whl (391 kB)
+2026-03-11T23:25:44.155589383Z Using cached propcache-0.4.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (210 kB)
+2026-03-11T23:25:44.157523767Z Using cached PySocks-1.7.1-py3-none-any.whl (16 kB)
+2026-03-11T23:25:44.159141757Z Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+2026-03-11T23:25:44.160729937Z Using cached wsproto-1.3.2-py3-none-any.whl (24 kB)
+2026-03-11T23:25:44.162385387Z Using cached sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+2026-03-11T23:25:44.164025598Z Using cached pycparser-3.0-py3-none-any.whl (48 kB)
+2026-03-11T23:25:44.165700858Z Using cached wcwidth-0.6.0-py3-none-any.whl (94 kB)
+2026-03-11T23:25:44.838816961Z Installing collected packages: starkbank-ecdsa, sortedcontainers, pytz, pyactiveresource, passlib, websockets, wcwidth, vine, uvloop, urllib3, tzdata, typing-extensions, tqdm, soupsieve, sniffio, six, redis, pyyaml, python-multipart, python-http-client, python-dotenv, pysocks, pycparser, pyasn1, psycopg2-binary, propcache, pluggy, packaging, numpy, multidict, MarkupSafe, mailgun, lxml, loguru, jiter, iniconfig, idna, httptools, h11, greenlet, frozenlist, docstring-parser, distro, click, charset-normalizer, certifi, billiard, bcrypt, attrs, annotated-types, yarl, wsproto, uvicorn, sqlalchemy, sentry-sdk, sendgrid, rsa, requests, python-dateutil, pytest, pyee, pydantic-core, prompt-toolkit, outcome, mangum, Mako, httpcore, ecdsa, click-plugins, click-didyoumean, cffi, beautifulsoup4, anyio, amqp, aiosignal, watchfiles, trio, starlette, python-jose, pytest-asyncio, pydantic, playwright, pandas, linkedin-api, kombu, httpx, googlemaps, cryptography, click-repl, alembic, aiohttp, trio-websocket, pydantic-settings, openai, fastapi, celery, anthropic, selenium
+2026-03-11T23:26:10.415521773Z Successfully installed Mako-1.3.10 MarkupSafe-3.0.3 aiohttp-3.9.0 aiosignal-1.4.0 alembic-1.12.1 amqp-5.3.1 annotated-types-0.7.0 anthropic-0.84.0 anyio-3.7.1 attrs-25.4.0 bcrypt-5.0.0 beautifulsoup4-4.12.2 billiard-4.2.4 celery-5.3.4 certifi-2026.2.25 cffi-2.0.0 charset-normalizer-3.4.5 click-8.3.1 click-didyoumean-0.3.1 click-plugins-1.1.1.2 click-repl-0.3.0 cryptography-46.0.5 distro-1.9.0 docstring-parser-0.17.0 ecdsa-0.19.1 fastapi-0.104.1 frozenlist-1.8.0 googlemaps-4.10.0 greenlet-3.0.1 h11-0.16.0 httpcore-1.0.9 httptools-0.7.1 httpx-0.25.2 idna-3.11 iniconfig-2.3.0 jiter-0.13.0 kombu-5.6.2 linkedin-api-2.0.0 loguru-0.7.2 lxml-6.0.2 mailgun-0.1.1 mangum-0.17.0 multidict-6.7.1 numpy-1.25.2 openai-1.3.5 outcome-1.3.0.post0 packaging-26.0 pandas-2.0.3 passlib-1.7.4 playwright-1.40.0 pluggy-1.6.0 prompt-toolkit-3.0.52 propcache-0.4.1 psycopg2-binary-2.9.9 pyactiveresource-1.0.1 pyasn1-0.6.2 pycparser-3.0 pydantic-2.5.0 pydantic-core-2.14.1 pydantic-settings-2.1.0 pyee-11.0.1 pysocks-1.7.1 pytest-7.4.3 pytest-asyncio-0.21.1 python-dateutil-2.9.0.post0 python-dotenv-1.0.0 python-http-client-3.3.7 python-jose-3.3.0 python-multipart-0.0.6 pytz-2026.1.post1 pyyaml-6.0.3 redis-5.0.1 requests-2.31.0 rsa-4.9.1 selenium-4.15.2 sendgrid-6.10.0 sentry-sdk-1.39.1 six-1.17.0 sniffio-1.3.1 sortedcontainers-2.4.0 soupsieve-2.8.3 sqlalchemy-2.0.23 starkbank-ecdsa-2.2.0 starlette-0.27.0 tqdm-4.67.3 trio-0.33.0 trio-websocket-0.12.2 typing-extensions-4.15.0 tzdata-2025.3 urllib3-2.6.3 uvicorn-0.24.0 uvloop-0.22.1 vine-5.1.0 watchfiles-1.1.1 wcwidth-0.6.0 websockets-16.0 wsproto-1.3.2 yarl-1.23.0
+2026-03-11T23:26:10.537357487Z 
+2026-03-11T23:26:10.537386577Z [notice] A new release of pip is available: 24.0 -> 26.0.1
+2026-03-11T23:26:10.537391227Z [notice] To update, run: pip install --upgrade pip
+2026-03-11T23:26:12.118800754Z ==> Requesting Node.js version >=16
+2026-03-11T23:26:12.252223741Z ==> Using Node.js version 25.8.1 via ./.venv/lib/python3.11/site-packages/playwright/driver/package/package.json
+2026-03-11T23:26:12.276080598Z ==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+2026-03-11T23:26:15.276792037Z ==> Uploading build...
+2026-03-11T23:26:35.171648909Z ==> Uploaded in 15.0s. Compression took 4.9s
+2026-03-11T23:26:35.261855588Z ==> Build successful 🎉
+2026-03-11T23:26:41.286739026Z ==> Deploying...
+2026-03-11T23:26:41.346376262Z ==> Setting WEB_CONCURRENCY=1 by default, based on available CPUs in the instance
+2026-03-11T23:27:15.805515116Z ==> Running 'uvicorn src.api.main:app --host 0.0.0.0 --port $PORT'
+2026-03-11T23:27:22.690274551Z 2026-03-11 23:27:22 | INFO     | src.core.logger:setup_logging:73 - Logging configured with level: INFO
+2026-03-11T23:27:31.892095854Z Traceback (most recent call last):
+2026-03-11T23:27:31.892116334Z   File "/opt/render/project/src/.venv/bin/uvicorn", line 8, in <module>
+2026-03-11T23:27:31.892137274Z     sys.exit(main())
+2026-03-11T23:27:31.892200206Z              ^^^^^^
+2026-03-11T23:27:31.892204496Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+2026-03-11T23:27:31.892525803Z     return self.main(*args, **kwargs)
+2026-03-11T23:27:31.892531373Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:31.892534933Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+2026-03-11T23:27:31.89287595Z     rv = self.invoke(ctx)
+2026-03-11T23:27:31.892887891Z          ^^^^^^^^^^^^^^^^
+2026-03-11T23:27:31.892890981Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+2026-03-11T23:27:31.893159236Z     return ctx.invoke(self.callback, **ctx.params)
+2026-03-11T23:27:31.893169507Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:31.893173217Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+2026-03-11T23:27:31.893388721Z     return callback(*args, **kwargs)
+2026-03-11T23:27:31.893393442Z            ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:31.893396982Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/uvicorn/main.py", line 416, in main
+2026-03-11T23:27:31.893543745Z     run(
+2026-03-11T23:27:31.893547505Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+2026-03-11T23:27:31.893731189Z     server.run()
+2026-03-11T23:27:31.893743619Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/uvicorn/server.py", line 61, in run
+2026-03-11T23:27:31.893832821Z     return asyncio.run(self.serve(sockets=sockets))
+2026-03-11T23:27:31.893863152Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:31.893865512Z   File "/opt/render/project/python/Python-3.11.9/lib/python3.11/asyncio/runners.py", line 190, in run
+2026-03-11T23:27:31.893983264Z     return runner.run(main)
+2026-03-11T23:27:31.893987834Z            ^^^^^^^^^^^^^^^^
+2026-03-11T23:27:31.893989705Z   File "/opt/render/project/python/Python-3.11.9/lib/python3.11/asyncio/runners.py", line 118, in run
+2026-03-11T23:27:31.894077456Z     return self._loop.run_until_complete(task)
+2026-03-11T23:27:31.894081607Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:31.894083987Z   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2026-03-11T23:27:31.89423944Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+2026-03-11T23:27:31.894313752Z     config.load()
+2026-03-11T23:27:31.894320722Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/uvicorn/config.py", line 467, in load
+2026-03-11T23:27:31.894464865Z     self.loaded_app = import_from_string(self.app)
+2026-03-11T23:27:31.894471545Z                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:31.894474295Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+2026-03-11T23:27:31.894566247Z     module = importlib.import_module(module_str)
+2026-03-11T23:27:31.894577837Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:31.894581837Z   File "/opt/render/project/python/Python-3.11.9/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-03-11T23:27:31.89472708Z     return _bootstrap._gcd_import(name[level:], package, level)
+2026-03-11T23:27:31.981857406Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:31.981902957Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-03-11T23:27:31.981907347Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-03-11T23:27:31.981910278Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-03-11T23:27:31.981912658Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-03-11T23:27:31.981915387Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-03-11T23:27:31.981918328Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-03-11T23:27:31.981920828Z   File "/opt/render/project/src/src/api/main.py", line 8, in <module>
+2026-03-11T23:27:31.981924108Z     from src.api.v1.routers import (
+2026-03-11T23:27:31.981927378Z   File "/opt/render/project/src/src/api/v1/routers/tasks.py", line 8, in <module>
+2026-03-11T23:27:31.981929708Z     from src.services.ai import ai_service
+2026-03-11T23:27:31.981932138Z   File "/opt/render/project/src/src/services/ai/__init__.py", line 4, in <module>
+2026-03-11T23:27:31.981934448Z     from .ai_service import AIService
+2026-03-11T23:27:31.981936898Z   File "/opt/render/project/src/src/services/ai/ai_service.py", line 6, in <module>
+2026-03-11T23:27:31.981939198Z     from src.services.providers.ai_providers import (
+2026-03-11T23:27:31.981941588Z   File "/opt/render/project/src/src/services/providers/ai_providers.py", line 21
+2026-03-11T23:27:31.981943828Z     pass
+2026-03-11T23:27:31.981946208Z         ^
+2026-03-11T23:27:31.981948918Z IndentationError: unindent does not match any outer indentation level
+2026-03-11T23:27:38.3051316Z ==> Exited with status 1
+2026-03-11T23:27:38.308675076Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+2026-03-11T23:27:43.082806686Z ==> Running 'uvicorn src.api.main:app --host 0.0.0.0 --port $PORT'
+2026-03-11T23:27:47.29440666Z ==> No open ports detected, continuing to scan...
+2026-03-11T23:27:47.396694182Z ==> Docs on specifying a port: https://render.com/docs/web-services#port-binding
+2026-03-11T23:27:49.785685631Z 2026-03-11 23:27:49 | INFO     | src.core.logger:setup_logging:73 - Logging configured with level: INFO
+2026-03-11T23:27:58.48407856Z Traceback (most recent call last):
+2026-03-11T23:27:58.48409914Z   File "/opt/render/project/src/.venv/bin/uvicorn", line 8, in <module>
+2026-03-11T23:27:58.484144521Z     sys.exit(main())
+2026-03-11T23:27:58.484148161Z              ^^^^^^
+2026-03-11T23:27:58.484151061Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+2026-03-11T23:27:58.484403147Z     return self.main(*args, **kwargs)
+2026-03-11T23:27:58.484444427Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:58.484470238Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/click/core.py", line 1406, in main
+2026-03-11T23:27:58.484742834Z     rv = self.invoke(ctx)
+2026-03-11T23:27:58.484754694Z          ^^^^^^^^^^^^^^^^
+2026-03-11T23:27:58.484758584Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+2026-03-11T23:27:58.484950128Z     return ctx.invoke(self.callback, **ctx.params)
+2026-03-11T23:27:58.485007549Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:58.485011649Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+2026-03-11T23:27:58.485170773Z     return callback(*args, **kwargs)
+2026-03-11T23:27:58.485218174Z            ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:58.485222044Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/uvicorn/main.py", line 416, in main
+2026-03-11T23:27:58.485346787Z     run(
+2026-03-11T23:27:58.485350097Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+2026-03-11T23:27:58.48550239Z     server.run()
+2026-03-11T23:27:58.4855057Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/uvicorn/server.py", line 61, in run
+2026-03-11T23:27:58.485628973Z     return asyncio.run(self.serve(sockets=sockets))
+2026-03-11T23:27:58.485661214Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:58.485690214Z   File "/opt/render/project/python/Python-3.11.9/lib/python3.11/asyncio/runners.py", line 190, in run
+2026-03-11T23:27:58.485842878Z     return runner.run(main)
+2026-03-11T23:27:58.485852188Z            ^^^^^^^^^^^^^^^^
+2026-03-11T23:27:58.485857868Z   File "/opt/render/project/python/Python-3.11.9/lib/python3.11/asyncio/runners.py", line 118, in run
+2026-03-11T23:27:58.48598357Z     return self._loop.run_until_complete(task)
+2026-03-11T23:27:58.485987151Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:58.485990401Z   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+2026-03-11T23:27:58.486109853Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/uvicorn/server.py", line 68, in serve
+2026-03-11T23:27:58.486189745Z     config.load()
+2026-03-11T23:27:58.486193305Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/uvicorn/config.py", line 467, in load
+2026-03-11T23:27:58.486352969Z     self.loaded_app = import_from_string(self.app)
+2026-03-11T23:27:58.486357239Z                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:58.486363879Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+2026-03-11T23:27:58.486467211Z     module = importlib.import_module(module_str)
+2026-03-11T23:27:58.486493932Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:58.486497022Z   File "/opt/render/project/python/Python-3.11.9/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2026-03-11T23:27:58.486607294Z     return _bootstrap._gcd_import(name[level:], package, level)
+2026-03-11T23:27:58.486662595Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-03-11T23:27:58.486666005Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2026-03-11T23:27:58.486668175Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2026-03-11T23:27:58.486670345Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2026-03-11T23:27:58.486672455Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2026-03-11T23:27:58.486674676Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2026-03-11T23:27:58.486676776Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2026-03-11T23:27:58.486679005Z   File "/opt/render/project/src/src/api/main.py", line 8, in <module>
+2026-03-11T23:27:58.486813168Z     from src.api.v1.routers import (
+2026-03-11T23:27:58.486822559Z   File "/opt/render/project/src/src/api/v1/routers/tasks.py", line 8, in <module>
+2026-03-11T23:27:58.48689563Z     from src.services.ai import ai_service
+2026-03-11T23:27:58.48690591Z   File "/opt/render/project/src/src/services/ai/__init__.py", line 4, in <module>
+2026-03-11T23:27:58.487043813Z     from .ai_service import AIService
+2026-03-11T23:27:58.487050193Z   File "/opt/render/project/src/src/services/ai/ai_service.py", line 6, in <module>
+2026-03-11T23:27:58.487156456Z     from src.services.providers.ai_providers import (
+2026-03-11T23:27:58.487161356Z   File "/opt/render/project/src/src/services/providers/ai_providers.py", line 21
+2026-03-11T23:27:58.487163856Z     pass
+2026-03-11T23:27:58.487166416Z         ^
+2026-03-11T23:27:58.487169166Z IndentationError: unindent does not match any outer indentation level
